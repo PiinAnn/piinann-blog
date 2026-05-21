@@ -1,0 +1,237 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const allPosts = await getCollection('posts');
+
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const studies = sortedPosts.filter(post => post.data.category === 'studies');
+const notes = sortedPosts.filter(post => post.data.category === 'notes');
+---
+
+<Layout title="Piin-Ann Blog">
+  <main>
+    <header class="page-header">
+      <h1>Piin-Ann Blog</h1>
+      <p class="intro">Studies, notes, and reflections.</p>
+    </header>
+
+    {studies.length > 0 && (
+      <section>
+        <h2>studies & working papers</h2>
+        <ul class="post-list">
+          {studies.map(post => (
+            <li>
+              <a href={`/writings/${post.id}`}>
+                <span class="post-title">{post.data.title}</span>
+                <span class="post-date">{post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}</span>
+              </a>
+              {post.data.description && <p class="post-desc">{post.data.description}</p>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {notes.length > 0 && (
+      <section>
+        <h2>notes</h2>
+        <ul class="post-list">
+          {notes.map(post => (
+            <li>
+              <a href={`/writings/${post.id}`}>
+                <span class="post-title">{post.data.title}</span>
+                <span class="post-date">{post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}</span>
+              </a>
+              {post.data.description && <p class="post-desc">{post.data.description}</p>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {sortedPosts.length === 0 && (
+      <p class="empty">No posts yet.</p>
+    )}
+    <footer class="page-footer">
+      <p class="contact-line">
+        Want to discuss any of these? Reach me at <span class="email-protect" data-user="astridw.pri" data-domain="gmail.com"></span>
+      </p>
+      
+      <script>
+        document.querySelectorAll('.email-protect').forEach(el => {
+          const user = el.dataset.user;
+          const domain = el.dataset.domain;
+          const a = document.createElement('a');
+          a.href = `mailto:${user}@${domain}`;
+          a.textContent = `${user}@${domain}`;
+          el.appendChild(a);
+        });
+      </script>
+         <a href="/" class="back-link">← home</a>
+        </footer>
+  </main>
+</Layout>
+
+<style>
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 24px 40px;
+  }
+
+  .page-header {
+    margin-bottom: 60px;
+  }
+
+  h1 {
+    font-size: 2.2em;
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+    color: var(--pink);
+  }
+
+  .intro {
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 0.9em;
+    margin: 0;
+  }
+
+  section {
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+    border-bottom: 1px dashed rgba(255, 79, 180, 0.5);
+  }
+
+  section:last-of-type {
+    border-bottom: none;
+  }
+
+  /* h2 - object-box style (matching homepage) */
+  h2 {
+    display: inline-block;
+    margin: 0 0 24px;
+    padding: 6px 14px 6px 24px;
+    border: 1.5px solid var(--pink-pale);
+    color: var(--pink-pale);
+    font-family: var(--mono);
+    font-size: 1.05em;
+    font-weight: normal;
+    letter-spacing: 0.02em;
+    position: relative;
+    background: rgba(255, 208, 236, 0.04);
+  }
+
+  h2::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--pink-pale);
+    box-shadow: 0 0 6px rgba(255, 208, 236, 0.4);
+  }
+
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .post-list li {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px dashed rgba(255, 79, 180, 0.15);
+  }
+
+  .post-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .post-list a {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 20px;
+    border-bottom: none;
+    padding: 4px 0;
+  }
+
+  .post-title {
+    color: var(--text);
+    font-size: 1.05em;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .post-list a:hover .post-title {
+    color: var(--pink);
+    border-bottom-color: var(--pink);
+  }
+
+  .post-date {
+    font-family: var(--mono);
+    color: var(--text-dim);
+    font-size: 0.85em;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .post-desc {
+    color: var(--text-dim);
+    font-size: 0.9em;
+    margin: 4px 0 0;
+    line-height: 1.5;
+  }
+
+  .empty {
+    color: var(--text-dim);
+    font-family: var(--mono);
+  }
+
+  /* Subtle home link at bottom */
+  .page-footer {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px dashed rgba(255, 79, 180, 0.1);
+    text-align: center;
+  }
+
+  .contact-line {
+    font-family: var(--mono);
+    font-size: 0.85em;
+    color: var(--text-dim);
+    margin: 0 0 24px;
+  }
+
+  .contact-line a {
+    color: var(--pink-soft);
+    border-bottom: 1px solid transparent;
+  }
+
+  .contact-line a:hover {
+    border-bottom-color: var(--pink-soft);
+  }
+
+  .back-link {
+    font-family: var(--mono);
+    font-size: 0.8em;
+    color: var(--text-dim);
+    border-bottom: none;
+    opacity: 0.6;
+    transition: opacity 0.2s, color 0.2s;
+  }
+
+  .back-link:hover {
+    color: var(--pink-soft);
+    opacity: 1;
+  }
+</style>

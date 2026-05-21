@@ -1,0 +1,105 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={`${post.data.title} — Piin Ann 平安`}>
+  <main>
+    <a href="/writings" class="back">← back to writings</a>
+
+    <article>
+      <header>
+        <p class="category">{post.data.category}~</p>
+        <h1>{post.data.title}</h1>
+        <p class="date">{post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+      </header>
+
+      <div class="content">
+        <Content />
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  .back {
+    font-family: var(--mono);
+    font-size: 0.9em;
+    color: var(--pink-soft);
+    display: inline-block;
+    margin-bottom: 40px;
+  }
+
+  header {
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px dashed rgba(255, 79, 180, 0.3);
+  }
+
+  .category {
+    font-family: var(--mono);
+    color: var(--pink);
+    font-size: 0.9em;
+    margin: 0 0 12px;
+  }
+
+  h1 {
+    font-size: 2em;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+  }
+
+  .date {
+    font-family: var(--mono);
+    color: var(--text-dim);
+    font-size: 0.85em;
+    margin: 0;
+  }
+
+  .content :global(h2) {
+    color: var(--pink-soft);
+    font-family: var(--mono);
+    font-weight: normal;
+    margin-top: 40px;
+    font-size: 1.2em;
+  }
+
+  .content :global(h2)::before {
+    content: "// ";
+    color: var(--text-dim);
+  }
+
+  .content :global(p) {
+    margin: 16px 0;
+    line-height: 1.7;
+  }
+
+  .content :global(ul) {
+    padding-left: 24px;
+  }
+
+  .content :global(li) {
+    margin: 8px 0;
+  }
+
+  .content :global(strong) {
+    color: var(--pink-soft);
+  }
+</style>
