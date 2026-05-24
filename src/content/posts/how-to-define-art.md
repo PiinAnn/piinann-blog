@@ -26,27 +26,26 @@ I think this explains why I started making music, because it makes me feel bette
 
 It also reminds me of *Rewire* by Nicole Vignola (2024), where she discusses labeling emotions as a way to decrease anxiety or fear. When we feel anxiety or fear, the amygdala in the limbic system is highly activated. But by labeling those emotions, we can activate the right ventrolateral prefrontal cortex, engaging the logical part of the brain to gain more control over these emotions.
 
-In summary, I think art is an act of labeling human anxiety, transferring uncertainty into an actual symbol.
+Therefore I think art serves, in a huge part, as an act of labeling human anxiety, transferring uncertainty into an actual symbol. At least that was the initial reason for me to create. But through the journey I've experienced, I'd say there is still something more than just controlling the uncertainty. Once the need for control settles, something more exploratory begins to stir. Control is only half of it. The other half is almost the opposite.
 
 ## What Is Well-being Anyway?
 
-We also discussed the definition of "health" and "well-being." It's kind of tricky for me, because I don't think there's a specific word to translate "well-being" in my native language. But I understand it as a person fully developing a complete body-mind-soul, where these three vectors point in the same direction for life.
+We also discussed the definition of "health" and "well-being." It's kind of tricky for me, because I don't think there's a specific word to translate "well-being" in my native language. But I understand it as a person fully developing a complete body-mind-soul, where these three vectors point in the same direction for life. Sometimes the brain fights against the mind and somehow fails to nurture our soul. It's certainly a lifelong challenge, we have to take care of our physical body, learn the mechanism of our psychological states, and explore the divinity within. All of these matter. Art, as Richard Hickman (2016) suggested, is an essential biological behavior for psychological health, because creating and conferring aesthetic significance is an instinctive desire of human beings.
 
-Sometimes the brain fights against the mind and somehow fails to nurture our soul. It's certainly a lifelong challenge, we have to take care of our physical body, learn the mechanism of our psychological states, and explore the divinity within. All of these matter.
-
-Art, as Richard Hickman (2016) suggested, is an essential biological behavior for psychological health, because creating and conferring aesthetic significance is an instinctive desire of human beings.
+There are certain moments when I felt body, mind, and soul fully aligned, while performing or singing, moments when I sensed the "ego" disappear, a true emptiness of my own existence. This flow state lowers the activity of the default mode network (Dietrich, 2004), the region tied to self-consciousness and anxiety. When that network quiets down and we let go of control, the boundaries of the self dissolve. This is the other end of the spectrum from control. And by losing the ego, there is no longer any conflict inside; it is not a defensive act, but a state where a true connection can finally happen, where the mind expands into an experience hard to put into words.
 
 ## A Curse in How We Teach Art
 
-With this perspective, I would say that some ways of teaching art, including elite education systems, competitive environments, are really a "curse" on this biological expression. The high pressure suppresses a human being's natural impulse to create. It's sad that people have to re-learn how to freely create art later in life.
+With this perspective, I would say that some ways of teaching art, including elite education systems and competitive environments, are really a "curse" on this biological expression. The high pressure suppresses a human being's natural impulse to create. It's sad that people have to re-learn how to freely create art later in life. But I believe we can still find a way to fix this: to discover the true essence of all kinds of art, and to liberate its true potential and its connection with human beings. Art is more than entertainment or competition, it is part of our instinctive act.
 
-But I believe we can still find a way to fix this. To discover the true essence of all kinds of art and liberate the true potential of it and the connection with human beings.
+In summary, art, as the act of "making special," is a bridge that runs in two directions. It grounds us, helping us feel some control over the anxiety we are born with. But it also reaches the other way, toward something transcendent and divine, a kind of question that words can't reach, where the ego dissolves and we enter a flow state, a kind of "emptiness."
 
 ---
 
 ## References
 
-1. Dissanayake, E. (2008). The arts after Darwin: Does art have an origin and adaptive function? In K. Zijlmans & W. van Damme (Eds.), *World Art Studies: Exploring Concepts and Approaches* (pp. 241–263). Amsterdam: Valiz.
-2. Tarr, B., Launay, J., & Dunbar, R. I. M. (2014). Music and social bonding: "Self-other" merging and neurohormonal mechanisms. *Frontiers in Psychology*, 5, 1096. 
+1. Dissanayake, E. (2008). The arts after Darwin: Does art have an origin and adaptive function? In K. Zijlmans & W. van Damme (Eds.), *World Art Studies: Exploring Concepts and Approaches* (pp. 241-263). Amsterdam: Valiz.
+2. Tarr, B., Launay, J., & Dunbar, R. I. M. (2014). Music and social bonding: "Self-other" merging and neurohormonal mechanisms. *Frontiers in Psychology*, 5, 1096.
 3. Vignola, N. (2024). *Rewire: Break Your Habits, Overcome Your Brain's Evolution, and Regenerate Your Life*. Penguin Books.
-4. Hickman, R. (2016). Reflections on art making and evolutionary psychology. *The Journal of Aesthetic Education*, 50(3), 1–12.
+4. Dietrich, A. (2004). Neurocognitive mechanisms underlying the experience of flow. *Consciousness and Cognition*, 13(4), 746-761.
+5. Hickman, R. (2016). Reflections on art making and evolutionary psychology. *The Journal of Aesthetic Education*, 50(3), 1-12.
