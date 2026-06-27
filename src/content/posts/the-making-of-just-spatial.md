@@ -39,12 +39,12 @@ I'm not going to walk through the FFT windows, the Vassilakis math, or the ERB s
 
 
 ## Why It Matters
- I'm still preparing the perceptual and physiological evaluation to test whether the measured reduction corresponds to a felt one. But the main idea is that less acoustic friction means a less harsh listening experience. If this holds true, this tool could be a gentle, non-invasive option for listeners with heightened auditory sensitivity (anyone who finds dense mixes wearing), or just help anyone focus better during long listening sessions.
+ I'm still preparing the perceptual and physiological evaluation to test whether the measured reduction corresponds to a felt one. But the main idea is that less acoustic friction means a less harsh listening experience. If this holds true, this tool could be a gentle option for listeners with heightened auditory sensitivity, anyone who finds dense mixes wearing over a long listen.
 
 ---
 
 ## Preprint
-If you are interested in the full method, equations, measurements, and limitations are all documented in the papper below.
+If you are interested in the full method, equations, measurements, and limitations are all documented in the paper below.
 
 Wang, Y.-A. (2026). *Just Spatial: Real-Time Dichotic Roughness Minimization for Stereo Music*. Zenodo. DOI: [10.5281/zenodo.20927968](https://doi.org/10.5281/zenodo.20927968)
 
