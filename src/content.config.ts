@@ -9,6 +9,7 @@ const posts = defineCollection({
     pubDate: z.date(),
     category: z.enum(['studies', 'notes']),
     tags: z.array(z.string()).optional(),
+    doi: z.string().optional(),
   }),
 });
 

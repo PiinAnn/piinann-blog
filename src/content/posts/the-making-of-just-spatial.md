@@ -1,9 +1,10 @@
 ---
 title: "The Making of Just Spatial"
-description: "From Just Intonation to roughness to space: how I built a real-time tool that lowers acoustic roughness by separating clashing frequencies between the two ears."
+description: "From Just Intonation to roughness to space: how I built a real-time tool that lowers acoustic roughness by separating clashing frequencies between the two ears." 
 pubDate: 2026-06-27
 category: studies
 tags: ["just-intonation", "roughness", "spatial-audio", "max-msp", "psychoacoustics"]
+doi: "10.5281/zenodo.20927968"
 ---
 <a href="https://doi.org/10.5281/zenodo.20927968"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.20927968.svg" alt="DOI" class="doi-badge" /></a>
 
