@@ -6,7 +6,12 @@ category: studies
 tags: ["just-intonation", "roughness", "spatial-audio", "max-msp", "psychoacoustics"]
 doi: "10.5281/zenodo.20927968"
 ---
-<a href="https://doi.org/10.5281/zenodo.20927968"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.20927968.svg" alt="DOI" class="doi-badge" /></a>
+<div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1rem 1.25rem; margin: 0 0 2rem;">
+  <a href="https://doi.org/10.5281/zenodo.20927968" style="display:inline-block; font-family:monospace; font-size:0.8rem; color:#f06fb0; border:1px solid rgba(240,111,176,0.4); border-radius:6px; padding:0.2rem 0.55rem; text-decoration:none;">DOI 10.5281/zenodo.20927968</a>
+  <p style="font-size:0.9rem; color:#9a9a9a; margin:0.7rem 0 0;">
+    Featured on <a href="https://cycling74.com/articles/spatialization-in-max" style="color:#f06fb0;">Cycling '74</a> · commissioned by Cycling '74
+  </p>
+</div>
 
 From my journey through Just Intonation (JI) and roughness *([My Beautiful Journey of Just Intonation Music](https://piinann.com/writings/ji-music/))*, I ended up going down another fascinating path leading toward a new solution.
 
@@ -38,17 +43,24 @@ I'm not going to walk through the FFT windows, the Vassilakis math, or the ERB s
 
 <img src="/figure_3.jpg" alt="Signal flow of the Max/MSP patch." style="max-width: 320px; width: 100%; display: block; margin: 2rem auto;" />
 
+## Hear It
+
+<div style="position: relative; padding-bottom: 56.25%; max-width: 700px; margin: 2rem auto;">
+  <iframe src="https://www.youtube.com/embed/45RbisnUYfs" style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:8px;" allowfullscreen loading="lazy"></iframe>
+</div>
+
+A quick test so you can hear the redistribution for yourself. Use headphones.
 
 ## Why It Matters
  I'm still preparing the perceptual and physiological evaluation to test whether the measured reduction corresponds to a felt one. But the main idea is that less acoustic friction means a less harsh listening experience. If this holds true, this tool could be a gentle option for listeners with heightened auditory sensitivity, anyone who finds dense mixes wearing over a long listen.
 
 ---
 
-## Preprint
-If you are interested in the full method, equations, measurements, and limitations are all documented in the paper below.
+## Resources
 
-Wang, Y.-A. (2026). *Just Spatial: Real-Time Dichotic Roughness Minimization for Stereo Music*. Zenodo. DOI: [10.5281/zenodo.20927968](https://doi.org/10.5281/zenodo.20927968)
+**Patch** — the full Max/MSP patch is available through the [Cycling '74 feature article](https://cycling74.com/articles/spatialization-in-max).
 
+**Preprint** — Wang, Y.-A. (2026). *Just Spatial: Real-Time Dichotic Roughness Minimization for Stereo Music*. Zenodo. DOI: [10.5281/zenodo.20927968](https://doi.org/10.5281/zenodo.20927968). Full method, equations, measurements, and limitations.
 
 ---
 
