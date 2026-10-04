@@ -1,5 +1,86 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const featured = [
+  {
+    title: 'Just Spatial',
+    year: '2026',
+    image: '/just-spatial.png',
+    href: 'https://cycling74.com/articles/spatialization-in-max',
+    desc: "Commissioned by Cycling '74 on the theme of spatialization. It splits conflicting frequency partials between the left and right ears, exploring auditory roughness through dichotic listening.",
+    links: [
+      { label: 'interview & download', url: 'https://cycling74.com/articles/spatialization-in-max' },
+      { label: 'preprint', url: 'https://zenodo.org/records/20927968' },
+      { label: 'sound demo', url: 'https://youtu.be/45RbisnUYfs' },
+    ],
+  },
+  {
+    title: 'To Hell We Fall 一起下地獄',
+    year: '2026',
+    yt: 'irSC_9r3td4',
+    desc: "Commissioned full original score for a free-roaming multiplayer VR experience by Moondream Reality (Moonshine), supported by the Ministry of Culture's Taiwan Content Plan.",
+    links: [],
+  },
+  {
+    title: 'Bio-Resonance: Hug Protocol',
+    year: '2026',
+    yt: 'UNffvZytHyc',
+    desc: "Interactive sound and light on a living tree, triggered by hugs and touch. Commissioned by Children's Cultural Services, City of Jyväskylä, as a side event of the Valon kaupunki festival.",
+    links: [{ label: 'press', url: 'https://www.ksml.fi/paikalliset/9832191' }],
+  },
+  {
+    title: 'Mutual Care Eco System',
+    year: '2026',
+    yt: 'fpLnOcR6ADc',
+    desc: 'Living plants as an instrument: bio signals mapped from Arduino to Max/MSP and Ableton. Live at Ääniasema experimental music festival.',
+    links: [],
+  },
+  {
+    title: 'Nature and Artificial Natures',
+    year: '2025',
+    yt: 'aRrmEMGAE7A',
+    desc: 'Interactive music and sound design for one of the works in the exhibition curated by Chen Pu, AMBI SPACE ONE, Taipei 101.',
+    links: [{ label: 'exhibition', url: 'https://tixfun.com/UTK0201_?PRODUCT_ID=Q01SZKKF' }],
+  },
+  {
+    title: 'ASUS ROG',
+    year: '2025',
+    yt: 'TE469koUF9I',
+    desc: 'Interactive sound design for a hand-tracking promotional experience. Ableton and Max/MSP.',
+    links: [],
+  },
+];
+
+const lists = [
+  {
+    heading: 'Interactive & Game',
+    items: [
+      { title: 'Running Tempo Modulation', year: '2025', note: "Presented at JYU Researchers' Night 2026", url: 'https://youtu.be/zWKxRp4hFHw', link: 'video' },
+      { title: 'Global Game Jam 2026', year: '2026', note: 'Music for 4 teams in 48 hours, Tampere', url: 'https://www.youtube.com/watch?v=8HZnkHqtqyA&list=PLr9AoEH3asMFRVlXP1MhZXJUu1XIyPTtm', link: 'playlist' },
+    ],
+  },
+  {
+    heading: 'Live Performance',
+    items: [
+      { title: 'BOKPAKL', year: '2023–2025', note: 'Music director, cross-media immersive concert series', url: 'https://youtu.be/kXRVL34zYGg', link: 'live' },
+      { title: 'TSG Hawks Season Opening', year: '2025', note: 'Featured opening guest', url: 'https://youtu.be/JWwraKbkMB0', link: 'video' },
+      { title: 'New Taipei City Sonic Wandering Festival', year: '2024', note: 'Opening guest and main stage', url: 'https://youtu.be/O5sM35_VJno', link: 'video' },
+      { title: 'Taiwan Lantern Festival', year: '2024', note: 'Featured artist, Tainan' },
+      { title: 'Taitung Spirit Festival', year: '2024', note: 'Outdoor performance' },
+    ],
+    footnote: 'Also: Hong Kong Blindcat, Witch House 女巫店, etc.',
+  },
+  {
+    heading: 'Music Releases',
+    items: [
+      { title: 'This Is How Waterfall Feels Like', year: '2025', url: 'https://youtu.be/zY8Zv7xyPPs', link: 'video' },
+      { title: 'Liquid Fairy', year: '2024', url: 'https://youtu.be/CoIA3Cq_Js4', link: 'video' },
+      { title: 'Life On Fire', year: '2023', url: 'https://youtu.be/mAuWD19hWCE', link: 'video' },
+      { title: 'Tat Savithur Varenyam', year: '2023', url: 'https://youtu.be/rfGIIY6u-rE', link: 'video' },
+      { title: 'Oursong Remix', year: '2023', note: '3rd place, Oursong Remix Competition', url: 'https://youtu.be/jsw6M5Y91Fs', link: 'video' },
+    ],
+  },
+];
 ---
 
 <Layout title="Piin Ann 平安">
@@ -37,147 +118,69 @@ import Layout from '../layouts/Layout.astro';
     <p>Applying the scientific rigor of Music & Science to Electronic Music Production and Interactive sound design.</p>
 
     <p><strong class="label">M.A. Student in Music and Science</strong>, University of Jyväskylä (JYU), Finland</p>
-    <p><strong class="label">Research Focus:</strong> Relationship between Just Intonation (JI), Auditory Roughness and Cognitive Load.</p>
+    <p><strong class="label">Research Focus:</strong> Real-time auditory roughness reduction through dichotic listening, and its effects on listener perception.</p>
     <p>Previously the Social Operations Manager for odrclass, Taiwan's largest music education community at the time. Produced 200+ articles and 100+ tutorial videos over two years for the Mandarin-speaking music community.</p>
 
     <h2 id="works">works~</h2>
 
-    <h3>Interactive / A-V Projects</h3>
+    <h3>Featured</h3>
 
-    <div class="work-item">
-      <span class="work-title">BOKPAKL — Music Director & Sound Designer</span><span class="work-year">2023–2025</span>
-      <img src="/bokpakl.jpg" alt="BOKPAKL" class="work-img" />
-      <p class="work-desc">A cross-media immersive concert series, crafted as cinematic audio-visual journeys exploring themes of isekai, death, and rebirth. Five solo concert chapters across Taiwan, plus invitations to National Lantern Festival 2024, Taitung Spirit Festival, TSG HAWKS Opening, New Taipei City Sonic Wandering Festival, and Hong Kong Blindcat, etc.</p>
-      <a href="https://open.spotify.com/artist/4c2D6UdR0FhKB82SlOJhdn" target="_blank">spotify →</a>
-      <a href="https://youtu.be/kXRVL34zYGg" target="_blank">live →</a>
-      <a href="https://youtu.be/b8piwuuvnng" target="_blank">music video →</a>
+    <div class="featured-grid">
+      {featured.map(w => (
+        <article class="card">
+          {w.yt ? (
+            <button class="thumb yt" data-id={w.yt} aria-label={`Play ${w.title}`}>
+              <img src={`https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg`} alt={w.title} loading="lazy" />
+              <span class="play">▶</span>
+            </button>
+          ) : (
+            <a class="thumb" href={w.href} target="_blank">
+              <img src={w.image} alt={w.title} loading="lazy" />
+            </a>
+          )}
+          <div class="card-head">
+            <span class="work-title">{w.title}</span>
+            <span class="work-year">{w.year}</span>
+          </div>
+          <p class="card-desc">{w.desc}</p>
+          {w.links.length > 0 && (
+            <div class="card-links">
+              {w.links.map(l => <a href={l.url} target="_blank">{l.label} →</a>)}
+            </div>
+          )}
+        </article>
+      ))}
     </div>
 
-    <div class="work-item">
-      <span class="work-title">Taipei 101 AMBI SPACE ONE — X-box Interactive Music & Sound Design</span><span class="work-year">2025</span>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/aRrmEMGAE7A" title="Taipei 101 AMBI SPACE ONE" allowfullscreen></iframe>
-      </div>
-      <p class="work-desc">An exhibition blending nature and technology. Music and interactive sound designer, using Ableton and Max/MSP.</p>
-      <a href="https://tixfun.com/UTK0201_?PRODUCT_ID=Q01SZKKF" target="_blank">event →</a>
-    </div>
-
-    <div class="work-item">
-      <span class="work-title">ASUS ROG — Hand-tracking Interactive Sound</span><span class="work-year">2025</span>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/TE469koUF9I" title="ASUS ROG Hand-tracking" allowfullscreen></iframe>
-      </div>
-      <p class="work-desc">Marketing promotion experience for ROG. Music and interactive sound designer, using Ableton and Max/MSP.</p>
-    </div>
-
-    <div class="work-item">
-      <span class="work-title">Mutual Care Eco System 🌳</span><span class="work-year">2026</span>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/fpLnOcR6ADc" title="Mutual Care Eco System" allowfullscreen></iframe>
-      </div>
-      <p class="work-desc">LIVE at Ääniasema — Experimental Music Festival. An interactive system built from plants, mapping bio signals from Arduino to Max/MSP & Ableton. Leaves create MIDI notes like an instrument; soil moisture, distance, and trunk capacitive sensors modulate sounds.</p>
-    </div>
-
-    <div class="work-item">
-      <span class="work-title">Running Tempo Modulation</span><span class="work-year">2025</span>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/zWKxRp4hFHw" title="Running Tempo Modulation" allowfullscreen></iframe>
-      </div>
-      <p class="work-desc">Personal project. Movement modulates music and tempo — faster pace activates high-arousal instruments like drum & bass; slower pace activates ambient sounds.</p>
-    </div>
-
-    <div class="work-item">
-      <span class="work-title">GGJ 2026 — Game Music & Sound Design</span><span class="work-year">2026</span>
-      <p class="work-desc">Global Game Jam in Tampere, Finland. Composed music for 4 groups within 48 hours.</p>
-      <a href="https://www.youtube.com/watch?v=8HZnkHqtqyA&list=PLr9AoEH3asMFRVlXP1MhZXJUu1XIyPTtm" target="_blank">playlist →</a>
-    </div>
-
-    <h3>Music Production</h3>
-
-    <div class="work-item">
-      <span class="work-title">This Is How Waterfall Feels Like</span><span class="work-year">2025</span>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/zY8Zv7xyPPs" title="This Is How Waterfall Feels Like" allowfullscreen></iframe>
-      </div>
-      <p class="work-desc">The sound I heard while I deeply felt the water element — shapeless, shifting form to permeate every space. This is my unspoken love, a talisman for my soul.</p>
-    </div>
-
-    <div class="work-item">
-      <span class="work-title">Liquid Fairy</span><span class="work-year">2024</span>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/CoIA3Cq_Js4" title="Liquid Fairy" allowfullscreen></iframe>
-      </div>
-      <p class="work-desc">Magical ambient sounds.</p>
-    </div>
-
-    <div class="work-item">
-      <span class="work-title">Life On Fire</span><span class="work-year">2023</span>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/mAuWD19hWCE" title="Life On Fire" allowfullscreen></iframe>
-      </div>
-      <p class="work-desc">Inspiration came while I was traveling the whole of Taiwan by foot. By the young age, I felt like our life cycle is "We burn, fall, settle, and reset the new cycle."</p>
-    </div>
-
-    <div class="work-item">
-      <span class="work-title">Tat Savithur Varenyam</span><span class="work-year">2023</span>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/rfGIIY6u-rE" title="Tat Savithur Varenyam" allowfullscreen></iframe>
-      </div>
-      <p class="work-desc">Original composition inspired by Vedic chants. Work for a Wellness Workshop.</p>
-    </div>
-
-    <div class="work-item">
-      <span class="work-title">Oursong Remix</span><span class="work-year">2023</span>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/jsw6M5Y91Fs" title="Oursong Remix" allowfullscreen></iframe>
-      </div>
-      <p class="work-desc">3rd place in the Oursong Remix Competition; also 1st in creator peer voting.</p>
-    </div>
-
-    <h3>Live Performance</h3>
-
-    <div class="work-item">
-      <span class="work-title">TSG HAWKS — Baseball Stadium Opening</span><span class="work-year">2025</span>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/JWwraKbkMB0" title="TSG HAWKS Opening" allowfullscreen></iframe>
-      </div>
-      <p class="work-desc">Featured opening guest performance for the 2025 Taiwan Professional Baseball League season opener.</p>
-    </div>
-
-    <div class="work-item">
-      <span class="work-title">Taiwan Lantern Festival</span><span class="work-year">2024</span>
-      <img src="/lantern.jpg" alt="Taiwan Lantern Festival" class="work-img" />
-      <p class="work-desc">Performed as featured artist at the National Lantern Festival in Tainan.</p>
-    </div>
-
-    <div class="work-item">
-      <span class="work-title">New Taipei City Sonic Wandering Festival</span><span class="work-year">2024</span>
-      <img src="/new_taipei.jpg" alt="New Taipei Sonic Wandering Festival" class="work-img" />
-      <p class="work-desc">Double performance: opening guest for the entire event, plus main stage set.</p>
-      <a href="https://youtu.be/O5sM35_VJno" target="_blank">watch →</a>
-    </div>
-
-    <div class="work-item">
-      <span class="work-title">Taitung Spirit Festival</span><span class="work-year">2024</span>
-      <img src="/taitung.jpg" alt="Taitung Spirit Festival" class="work-img" />
-      <p class="work-desc">Outdoor performance at the natural-awakening festival in Taitung.</p>
-    </div>
-
-    <p><em>Other past performances include: Hong Kong Blindcat, Witch House (女巫店), and more.</em></p>
+    {lists.map(group => (
+      <section class="work-list">
+        <h3>{group.heading}</h3>
+        <ul class="compact">
+          {group.items.map(i => (
+            <li>
+              <span class="li-title">{i.title}</span>
+              <span class="li-year">{i.year}</span>
+              {i.note && <span class="li-note">{i.note}</span>}
+              {i.url && <a href={i.url} target="_blank">{i.link} →</a>}
+            </li>
+          ))}
+        </ul>
+        {group.footnote && <p class="footnote"><em>{group.footnote}</em></p>}
+      </section>
+    ))}
 
     <h2 id="blog">blog~</h2>
-  <a href="/writings" class="blog-link-box">
-    <p class="blog-desc">Notes on my research, some interesting things, and personal reflections.</p>
-     <p class="blog-cta">→ read more</p>
-     </a>
-</a>
-  <h2 id="services">services~</h2>
-    <p><em>Currently composing full original score for an upcoming VR multiplayer experience with Moonshine Animation. (Details available upon request.)</em></p>
-    <ul>
-      <li><strong>Interactive Sound Design</strong> — Max/MSP, Audio-Visual Synchronization, Custom Controller Mapping</li>
-      <li><strong>Digital Music Production</strong> — Ableton Live, Electronic Music, Digital Arrangement</li>
-      <li><strong>Game Audio Design</strong> — Wwise, game theme song, sound fx design</li>
-      <li><strong>Performance</strong> — Studio Session, Live Feature, Live Electronic Performance</li>
+    <a href="/writings" class="blog-link-box">
+      <p class="blog-desc">Notes on my research, some interesting things, and personal reflections.</p>
+      <p class="blog-cta">→ read more</p>
+    </a>
+
+    <h2 id="services">services~</h2>
+    <ul class="services">
+      <li><strong>Interactive Sound Design</strong>: Max/MSP, Audio-Visual Synchronization, Custom Controller Mapping</li>
+      <li><strong>Digital Music Production</strong>: Ableton Live, Electronic Music, Digital Arrangement</li>
+      <li><strong>Game Audio Design</strong>: Wwise, game theme song, sound fx design</li>
+      <li><strong>Performance</strong>: Studio Session, Live Feature, Live Electronic Performance</li>
     </ul>
 
     <p class="footer-contact">
@@ -191,6 +194,7 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </main>
 </Layout>
+
 <script>
   document.querySelectorAll('.email-protect').forEach(el => {
     const user = el.dataset.user;
@@ -200,11 +204,27 @@ import Layout from '../layouts/Layout.astro';
     a.textContent = `${user}@${domain}`;
     el.appendChild(a);
   });
+
+  // Load the YouTube player only when a thumbnail is clicked
+  document.querySelectorAll('.thumb.yt').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.id;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+      iframe.allow = 'autoplay; encrypted-media; fullscreen';
+      iframe.allowFullscreen = true;
+      iframe.title = btn.getAttribute('aria-label') || 'video';
+      const box = document.createElement('div');
+      box.className = 'thumb';
+      box.appendChild(iframe);
+      btn.replaceWith(box);
+    });
+  });
 </script>
 
 <style>
   main {
-    max-width: 820px;
+    max-width: 960px;
     margin: 0 auto;
     padding: 40px 24px 80px;
   }
@@ -321,7 +341,6 @@ import Layout from '../layouts/Layout.astro';
     color: var(--text-dim);
   }
 
-  /* Statement */
   .statement {
     font-style: italic;
     color: var(--text);
@@ -331,124 +350,193 @@ import Layout from '../layouts/Layout.astro';
     font-size: 1.02em;
   }
 
-  /* Inline label style */
   .label {
     color: var(--pink-soft);
     font-family: var(--mono);
     font-weight: normal;
   }
 
-  /* Work item */
-  .work-item {
-    margin: 28px 0 36px;
-    padding-left: 14px;
-    border-left: 1px solid rgba(255, 79, 180, 0.25);
+  /* Selected names row */
+  .selected {
+    font-family: var(--mono);
+    font-size: 0.9em;
+    color: var(--text);
+    padding: 14px 16px;
+    border: 1px dashed rgba(255, 79, 180, 0.3);
+    border-radius: 3px;
+    line-height: 1.7;
   }
+  .selected-label {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.85em;
+    margin-bottom: 4px;
+  }
+
+  /* Featured grid: 3 columns desktop, 2 tablet, 1 phone */
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px 22px;
+  }
+
+  .card { min-width: 0; }
+
+  .thumb {
+    display: block;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 79, 180, 0.2);
+    background: #000;
+    padding: 0;
+    cursor: pointer;
+  }
+  a.thumb { border-bottom: 1px solid rgba(255, 79, 180, 0.2); }
+
+  .thumb img {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    max-width: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .thumb:hover img { transform: scale(1.03); opacity: 0.85; }
+
+  .thumb iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1.5px solid var(--pink);
+    color: var(--pink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    padding-left: 3px;
+  }
+
+  .card-head { margin: 12px 0 4px; }
 
   .work-title {
     font-weight: 600;
     color: var(--pink);
     font-family: var(--mono);
-    font-size: 0.98em;
+    font-size: 0.95em;
   }
 
   .work-year {
     color: var(--text-dim);
     font-family: var(--mono);
-    font-size: 0.85em;
+    font-size: 0.82em;
     margin-left: 6px;
   }
 
-  .work-desc {
-    margin: 6px 0 10px;
+  .card-desc {
+    margin: 4px 0 8px;
     color: var(--text);
+    font-size: 0.9em;
+    line-height: 1.5;
   }
 
-  .work-item a {
+  .card-links a {
+    white-space: nowrap;
+    display: inline-block;
     font-family: var(--mono);
-    font-size: 0.88em;
+    font-size: 0.82em;
     margin-right: 12px;
   }
 
-  /* Work image */
-  .work-img {
-    max-width: 100%;
-    width: 100%;
-    border-radius: 4px;
-    margin: 12px 0 10px;
-    border: 1px solid rgba(255, 79, 180, 0.2);
-    display: block;
+  /* Compact lists */
+  .work-list { margin-top: 12px; }
+
+  ul.compact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
+  ul.compact li {
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(255, 79, 180, 0.15);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 12px;
+  }
+  ul.compact li::before { content: none; }
+
+  .li-title { color: var(--text); font-weight: 600; }
+  .li-year { color: var(--text-dim); font-family: var(--mono); font-size: 0.82em; }
+  .li-note { color: var(--text-dim); font-size: 0.9em; }
+  ul.compact a { font-family: var(--mono); font-size: 0.82em; margin-left: auto; }
+
+  .footnote { margin: 10px 0 0; font-size: 0.9em; }
+
   /* Blog link box */
   .blog-link-box {
-  display: block;
-  margin: 28px 0 36px;
-  padding: 24px 28px;
-  background: rgba(255, 208, 236, 0.03);
-  border: 1.5px dashed rgba(255, 208, 236, 0.4);
-  border-radius: 3px;
-  text-decoration: none;
-  color: var(--text);
-  transition: background 0.2s, border-color 0.2s;
-}
-
-.blog-link-box:hover {
-  background: rgba(255, 208, 236, 0.06);
-  border-color: var(--pink-pale);
-  border-bottom-color: var(--pink-pale);
-}
-
-.blog-desc {
-  color: var(--text) !important;
-  margin: 0 0 8px;
-  font-size: 1em;
-}
-
-.blog-cta {
-  color: var(--pink);
-  font-family: var(--mono);
-  font-size: 0.9em;
-  margin: 0;
-}
-
-  /* YouTube embed */
-  .video-wrap {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
-    margin: 12px 0 10px;
-    border-radius: 4px;
-    border: 1px solid rgba(255, 79, 180, 0.2);
+    display: block;
+    margin: 28px 0 36px;
+    padding: 24px 28px;
+    background: rgba(255, 208, 236, 0.03);
+    border: 1.5px dashed rgba(255, 208, 236, 0.4);
+    border-radius: 3px;
+    text-decoration: none;
+    color: var(--text);
+    transition: background 0.2s, border-color 0.2s;
   }
-  .video-wrap iframe {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    border: 0;
+  .blog-link-box:hover {
+    background: rgba(255, 208, 236, 0.06);
+    border-color: var(--pink-pale);
+    border-bottom-color: var(--pink-pale);
+  }
+  .blog-desc {
+    color: var(--text) !important;
+    margin: 0 0 8px;
+    font-size: 1em;
+  }
+  .blog-cta {
+    color: var(--pink);
+    font-family: var(--mono);
+    font-size: 0.9em;
+    margin: 0;
   }
 
   /* Services list */
-  ul {
+  ul.services {
     padding-left: 0;
     list-style: none;
   }
-
-  ul li {
+  ul.services li {
     margin: 12px 0;
     position: relative;
     padding-left: 18px;
   }
-
-  ul li::before {
+  ul.services li::before {
     content: "▸";
     color: var(--pink);
     position: absolute;
     left: 0;
   }
-
-  ul li strong {
+  ul.services li strong {
     color: var(--pink-soft);
     font-family: var(--mono);
     font-weight: normal;
@@ -465,22 +553,25 @@ import Layout from '../layouts/Layout.astro';
     font-family: var(--mono);
     font-size: 0.88em;
   }
-
   .footer-logo {
     text-align: center;
     margin-top: 60px;
     opacity: 0.7;
   }
-
   .footer-logo img {
     width: 80px;
     height: auto;
   }
 
-  /* Mobile */
+  @media (max-width: 860px) {
+    .featured-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
   @media (max-width: 600px) {
     .header { flex-direction: column; align-items: flex-start; gap: 16px; }
     .profile-img { width: 110px; height: 110px; }
     h1 { font-size: 2em; }
+    .featured-grid { grid-template-columns: 1fr; }
+    ul.compact a { margin-left: 0; }
   }
 </style>
