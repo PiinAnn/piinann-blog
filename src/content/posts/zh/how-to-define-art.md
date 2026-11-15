@@ -2,7 +2,7 @@
 title: "藝術該如何定義？"
 description: "從演化心理學和創作的生物性，重新思考藝術是什麼。"
 pubDate: 2026-03-15
-category: studies
+category: notes
 tags: ["art-and-wellbeing", "philosophy", "evolutionary-psychology", "coursework"]
 ---
 

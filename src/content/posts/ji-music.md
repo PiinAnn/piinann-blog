@@ -3,7 +3,7 @@
 title: "My Beautiful Journey of Just Intonation Music"
 description: "A personal journey into microtonal music, roughness, and how frequency combinations make it all different."
 pubDate: 2026-04-20
-category: studies
+category: notes
 tags: ["just-intonation", "roughness", "music-psychology", "coursework"]
 ---
 

@@ -2,7 +2,7 @@
 title: "How to Define Art?"
 description: "Rethinking art through evolutionary psychology and the biology of making"
 pubDate: 2026-03-15
-category: studies
+category: notes
 tags: ["art-and-wellbeing", "philosophy", "evolutionary-psychology", "coursework"]
 ---
 

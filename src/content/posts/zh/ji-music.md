@@ -2,7 +2,7 @@
 title: "我的純律之旅"
 description: "從微分音開始，一路走到粗糙度，聊聊不同的頻率組合為什麼會讓聽感這麼不一樣。"
 pubDate: 2026-04-20
-category: studies
+category: notes
 tags: ["just-intonation", "roughness", "music-psychology", "coursework"]
 ---
 
