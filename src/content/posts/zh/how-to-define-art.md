@@ -6,7 +6,7 @@ category: studies
 tags: ["art-and-wellbeing", "philosophy", "evolutionary-psychology", "coursework"]
 ---
 
-藝術該如何定義？我想這是所有接觸藝術、使用藝術的人，都會思索的一個問題。我大學念的是哲學系，以前就討論過這個主題好幾次。我記得我當時的想法是：這世間的一切都是藝術，因為所有事情都是在創造，無論它是不是藝術的表達。或者說，只要你主觀上認為某個東西是藝術，而且能用意義去解釋它，它就是藝術。（想想當代美術館裡陳列的那些很荒謬的東西，像是馬桶或香蕉皮等等。）有些觀點則相反，認為藝術不需要承載任何意義，只是為了陶冶性情，是在生活之外，一份「多餘」的品味或是嗜好；也有的人是站在社會學的角度認為是一種文化的傳遞，無形的資產隨著世代累積的成果。無論你認為是否需要具備意義，或者是否具備某些特定的用途，今天，我想從一個更普遍、更底層的角度，來討論藝術出現的生物性基礎。
+藝術該如何定義？我想這是所有接觸藝術、使用藝術的人，都會思索的一個問題。我大學念的是哲學系，以前就討論過這個主題好幾次。我記得我當時的想法是：這世間的一切都是藝術，因為所有事情都是在創造，無論它是不是藝術的表達。或者說，只要你主觀上認為某個東西是藝術，而且能用意義去解釋它，它就是藝術。（想想當代美術館裡陳列的那些很荒謬的東西，像是馬桶或香蕉皮等等。）有些觀點則相反，認為藝術不需要承載任何意義，只是為了陶冶性情，是在生活之外，一份「多餘」的品味或是嗜好。王爾德（Oscar Wilde）就在《格雷的畫像》（1891）的序言裡寫道：「所有的藝術都是毫無用處的。」甚至認知心理學家 Steven Pinker（1997）也認為，音樂只是演化的副產品，是一塊「聽覺的起司蛋糕」。也有的人是站在社會學的角度，認為藝術是一種文化的傳遞，是無形的資產隨著世代累積的成果，例如 Bourdieu（1986）提出的「文化資本」（cultural capital）。另外，也有人從演化的角度主張藝術有它的功能，例如達爾文（1871）提出「性擇」的概念，認為人類的音樂可能和鳥鳴一樣，是為了求偶而演化的；心理學家 Geoffrey Miller（2000）也認為，藝術就像孔雀的尾巴，是展示自身能力、吸引伴侶的方式。我認為這或許解釋了一部分，但並不完整，因為還有許多藝術，和吸引伴侶並沒有太大的關係。無論你認為是否需要具備意義，或者是否具備某些特定的用途，今天，我想從一個更普遍、更底層的角度，來討論藝術出現的生物性基礎。
 
 
 ## 藝術是一種生物行為
@@ -66,3 +66,8 @@ tags: ["art-and-wellbeing", "philosophy", "evolutionary-psychology", "coursework
 7. Bryant, B. (1992). *The Wheel of Time Sand Mandala: Visual Scripture of Tibetan Buddhism*. San Francisco: HarperSanFrancisco.
 8. Blasdel, C. Y. (2005). *The Single Tone: A Personal Journey into Shakuhachi Music*. Tokyo: Printed Matter Press.
 9. Cage, J. (1961). *Silence: Lectures and Writings*. Middletown, CT: Wesleyan University Press.
+10. Darwin, C. (1871). *The Descent of Man, and Selection in Relation to Sex*. London: John Murray.
+11. Miller, G. F. (2000). *The Mating Mind: How Sexual Choice Shaped the Evolution of Human Nature*. New York: Doubleday.
+12. Wilde, O. (1891). *The Picture of Dorian Gray*. London: Ward, Lock & Co.
+13. Pinker, S. (1997). *How the Mind Works*. New York: W. W. Norton.
+14. Bourdieu, P. (1986). The forms of capital. In J. Richardson (Ed.), *Handbook of Theory and Research for the Sociology of Education* (pp. 241-258). Westport, CT: Greenwood.
