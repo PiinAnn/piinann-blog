@@ -1,0 +1,252 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Fonts from './Fonts.astro';
+import { ui, langOf, slugOf, postUrl, indexUrl, formatDate, type Lang } from '../lib/i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const other: Lang = lang === 'en' ? 'zh' : 'en';
+
+const all = await getCollection('posts');
+
+// English list: English posts only.
+// Chinese list: the Chinese version where it exists, otherwise the English post (marked).
+const english = all.filter((p) => langOf(p) === 'en');
+const listed = lang === 'en'
+  ? english
+  : english.map((en) => all.find((p) => langOf(p) === 'zh' && slugOf(p) === slugOf(en)) ?? en)
+      .concat(all.filter((p) => langOf(p) === 'zh' && !english.some((en) => slugOf(en) === slugOf(p))));
+
+const sorted = listed.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const groups = [
+  { key: 'studies', label: t.studies, posts: sorted.filter((p) => p.data.category === 'studies') },
+  { key: 'notes', label: t.notes, posts: sorted.filter((p) => p.data.category === 'notes') },
+];
+---
+
+<Layout
+  title={t.blogTitle}
+  lang={t.htmlLang}
+  reading
+  alternates={[{ lang: 'en', href: indexUrl('en') }, { lang: 'zh-Hant', href: indexUrl('zh') }]}
+>
+  <Fonts />
+  <main>
+    <nav class="topbar">
+      <a href="/" class="home">{t.home}</a>
+      <a href={indexUrl(other)} class="lang-switch" hreflang={ui[other].htmlLang}>{t.switchTo}</a>
+    </nav>
+
+    <header class="page-header">
+      <h1>{t.blogTitle}</h1>
+      <p class="intro">{t.intro}</p>
+    </header>
+
+    {groups.map((g) => g.posts.length > 0 && (
+      <section>
+        <h2>{g.label}</h2>
+        <ul class="post-list">
+          {g.posts.map((post) => (
+            <li>
+              <a href={postUrl(post)} class="post-link">
+                <span class="post-title">
+                  {post.data.title}
+                  {lang === 'zh' && langOf(post) === 'en' && <span class="lang-tag">{t.onlyOther}</span>}
+                </span>
+                <span class="post-date">{formatDate(post.data.pubDate, lang)}</span>
+              </a>
+              {post.data.doi && (
+                <a href={`https://doi.org/${post.data.doi}`} class="doi-badge-list">
+                  <img src={`https://zenodo.org/badge/DOI/${post.data.doi}.svg`} alt="DOI" />
+                </a>
+              )}
+              {post.data.description && <p class="post-desc">{post.data.description}</p>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+
+    {sorted.length === 0 && <p class="empty">{t.empty}</p>}
+
+    <footer class="page-footer">
+      <p class="contact-line">
+        {t.contact} <span class="email-protect" data-user="piinannw" data-domain="gmail.com"></span>
+      </p>
+      <a href="/" class="back-link">{t.home}</a>
+    </footer>
+  </main>
+</Layout>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.email-protect').forEach((el) => {
+    const a = document.createElement('a');
+    a.href = `mailto:${el.dataset.user}@${el.dataset.domain}`;
+    a.textContent = `${el.dataset.user}@${el.dataset.domain}`;
+    el.appendChild(a);
+  });
+</script>
+
+<style>
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 24px 40px;
+  }
+
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 56px;
+    font-family: var(--mono);
+    font-size: 0.8em;
+  }
+
+  .topbar a { border-bottom: none; }
+  .home { color: var(--text-dim); }
+  .home:hover { color: var(--accent); }
+
+  .lang-switch {
+    color: var(--text);
+    border: 1px solid var(--accent-line) !important;
+    border-radius: 999px;
+    padding: 2px 12px;
+  }
+  .lang-switch:hover { color: var(--accent); }
+
+  .page-header { margin-bottom: 56px; }
+
+  h1 {
+    font-size: 2.2em;
+    font-weight: 600;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    color: var(--text);
+  }
+
+  .intro {
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 0.8em;
+    margin: 0;
+  }
+
+  section {
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px dashed var(--accent-faint);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  /* section label: the pink object box from the homepage */
+  h2 {
+    display: inline-block;
+    margin: 0 0 24px;
+    padding: 4px 14px 4px 24px;
+    border: 1.5px solid var(--accent-line);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 0.85em;
+    font-weight: normal;
+    letter-spacing: 0.02em;
+    position: relative;
+  }
+  h2::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent-line);
+  }
+
+  .post-list { list-style: none; padding: 0; margin: 0; }
+  .post-list li {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+  }
+  .post-list li:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .post-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 20px;
+    border-bottom: none !important;
+  }
+
+  .post-title {
+    color: var(--text);
+    font-size: 1.1em;
+    font-weight: 600;
+    line-height: 1.4;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .post-link:hover .post-title { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .lang-tag {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 0 6px;
+    font-family: var(--mono);
+    font-size: 0.6em;
+    font-weight: normal;
+    color: var(--text-dim);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    vertical-align: middle;
+  }
+
+  .post-date {
+    font-family: var(--mono);
+    color: var(--text-dim);
+    font-size: 0.75em;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .post-desc {
+    color: var(--text-dim);
+    font-size: 0.95em;
+    margin: 6px 0 0;
+    line-height: 1.6;
+  }
+
+  .doi-badge-list { display: inline-block; margin: 6px 0 0; border-bottom: none; }
+  .doi-badge-list img { height: 18px; display: block; margin: 0; border-radius: 3px; }
+
+  .empty { color: var(--text-dim); font-family: var(--mono); }
+
+  .page-footer {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px dashed var(--accent-faint);
+    text-align: center;
+  }
+  .contact-line {
+    font-family: var(--mono);
+    font-size: 0.75em;
+    color: var(--text-dim);
+    margin: 0 0 24px;
+  }
+  .back-link {
+    font-family: var(--mono);
+    font-size: 0.75em;
+    color: var(--text-dim);
+    border-bottom: none;
+  }
+  .back-link:hover { color: var(--accent); }
+
+  @media (max-width: 560px) {
+    .post-link { flex-direction: column; gap: 4px; }
+  }
+</style>

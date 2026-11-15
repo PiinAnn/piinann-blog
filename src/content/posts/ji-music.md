@@ -31,7 +31,7 @@ JI music sounds odd to some people's ears. At least some of my musician friends 
 
 As I mentioned, good music involves many factors, and one of them is the complexity of cultural acquisition. Being used to a system can sometimes impact us more powerfully than the physical roughness disturbances. Scientists have found ways to exclude cultural acquisition: one is testing babies, another is testing native Amazonians.
 
-In the studies of Zentner & Kagan (1996), they tested babies (4–6 months) for their natural responses to "consonance" and "dissonance" sounds. The babies had longer looking time for consonant sounds, and showed more motor activity (an annoyance response) for dissonant ones. This proved a point that humans have an innate preference for consonant intervals.
+In the studies of Zentner & Kagan (1996), they tested babies (4–6 months) for their natural responses to "consonance" and "dissonance" sounds. The babies had longer looking time for consonant sounds, and showed more motor activity (an annoyance response) for dissonant ones. This suggests that humans may have an innate preference for consonant intervals.
 
 Some people questioned this: "the baby might already be influenced before birth, or they just learn very fast within a few months." So McDermott et al. (2016) did a specific study on native Amazonians, who have never learned Western music, and whose traditional music has no polyphony, so they don't even have the concept of chords. The results showed that they all had an innate aversion to rough sounds, but they did not show preference for more consonant intervals.
 
@@ -59,7 +59,7 @@ JI was where I started, the visual stability on the oscilloscope, the feeling of
 
 JI is one way to lower roughness. But it has its own problems, like wolf intervals. What truly matters is whether the harmonics fight or align, whether the brain has to work or relax.
 
-That's why my research direction is moving toward roughness itself, not just JI. Most experiments so far focused on preference, which is subjective, and some still compare dissonance and consonance within the scale of 12-TET. I want to dig deeper into the cognitive load of low-roughness spectra and lower beating effects, for my further research.
+That's why my research direction is moving from JI toward roughness itself. As I said, what we call "consonance" in music works on several levels: the physiological effect, how the brain judges whether something sounds consonant, and cultural preference. The latter two are more subjective, so next I want to focus on roughness first: how to reduce roughness and beating, and what effects that has.
 
 ---
 

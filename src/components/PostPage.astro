@@ -1,0 +1,188 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Fonts from './Fonts.astro';
+import { ui, langOf, postUrl, indexUrl, counterpart, formatDate } from '../lib/i18n';
+
+interface Props { post: CollectionEntry<'posts'> }
+const { post } = Astro.props;
+const lang = langOf(post);
+const t = ui[lang];
+const all = await getCollection('posts');
+const alt = counterpart(post, all);
+const { Content } = await render(post);
+
+const alternates = alt
+  ? [post, alt].map((p) => ({ lang: ui[langOf(p)].htmlLang, href: postUrl(p) }))
+  : [];
+---
+
+<Layout title={`${post.data.title} — Piin Ann 平安`} lang={t.htmlLang} reading alternates={alternates}>
+  <Fonts />
+  <main>
+    <nav class="topbar">
+      <a href={indexUrl(lang)} class="back">{t.back}</a>
+      {alt && (
+        <a href={postUrl(alt)} class="lang-switch" hreflang={ui[langOf(alt)].htmlLang}>{t.switchTo}</a>
+      )}
+    </nav>
+
+    <article>
+      <header>
+        <p class="category">{lang === 'zh' ? ui.zh[post.data.category] : post.data.category}</p>
+        <h1>{post.data.title}</h1>
+        <p class="date">{formatDate(post.data.pubDate, lang, true)}</p>
+        {post.data.doi && (
+          <p class="doi"><a href={`https://doi.org/${post.data.doi}`}>DOI {post.data.doi}</a></p>
+        )}
+      </header>
+
+      <div class="content">
+        <Content />
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 32px 24px 96px;
+  }
+
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 48px;
+    font-family: var(--mono);
+    font-size: 0.8em;
+  }
+  .topbar a { border-bottom: none; }
+  .back { color: var(--text-dim); }
+  .back:hover { color: var(--accent); }
+  .lang-switch {
+    color: var(--text);
+    border: 1px solid var(--accent-line) !important;
+    border-radius: 999px;
+    padding: 2px 12px;
+  }
+  .lang-switch:hover { color: var(--accent); }
+
+  header {
+    margin-bottom: 40px;
+    padding-bottom: 28px;
+    border-bottom: 1px dashed var(--accent-faint);
+  }
+
+  .category {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.75em;
+    color: var(--text);
+    margin: 0 0 16px;
+    padding: 1px 10px 1px 20px;
+    border: 1.5px solid var(--accent-line);
+    position: relative;
+  }
+  .category::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-line);
+  }
+
+  h1 {
+    font-size: 2.1em;
+    font-weight: 600;
+    line-height: 1.25;
+    margin: 0 0 14px;
+    letter-spacing: -0.01em;
+  }
+
+  .date, .doi {
+    font-family: var(--mono);
+    color: var(--text-dim);
+    font-size: 0.75em;
+    margin: 0;
+  }
+  .doi { margin-top: 6px; }
+
+  /* ---------- article body ---------- */
+  .content :global(p) { margin: 1.1em 0; }
+
+  .content :global(a) {
+    border-bottom: none;
+    text-decoration: underline;
+    text-decoration-color: var(--accent-faint);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  .content :global(a:hover) { text-decoration-color: var(--accent); }
+
+  .content :global(h2) {
+    font-size: 1.35em;
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 2.2em 0 0.6em;
+    padding-left: 14px;
+    border-left: 3px solid var(--accent-line);
+  }
+
+  .content :global(h3) {
+    font-size: 1.12em;
+    font-weight: 600;
+    margin: 1.8em 0 0.4em;
+  }
+
+  .content :global(strong) { font-weight: 600; color: var(--text); }
+
+  .content :global(ul), .content :global(ol) { padding-left: 1.4em; }
+  .content :global(li) { margin: 0.4em 0; }
+
+  .content :global(blockquote) {
+    margin: 1.6em 0;
+    padding: 0.2em 0 0.2em 1.2em;
+    border-left: 2px solid var(--accent-line);
+    color: var(--text-dim);
+    font-style: italic;
+  }
+
+  .content :global(hr) {
+    border: none;
+    border-top: 1px dashed var(--accent-faint);
+    margin: 3em 0;
+  }
+
+  .content :global(code) {
+    font-family: var(--mono);
+    font-size: 0.85em;
+    padding: 0.1em 0.35em;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+
+  .content :global(img) { border-radius: 6px; }
+
+  /* boxed note, e.g. the "Featured on Cycling '74" box */
+  .content :global(.note-box) {
+    font-family: var(--mono);
+    font-size: 0.8em;
+    color: var(--text-dim);
+    border: 1px solid var(--accent-faint);
+    border-radius: 8px;
+    padding: 0.9em 1.2em;
+    margin: 0 0 2em;
+  }
+  .content :global(.note-box p) { margin: 0; }
+
+  :global(html[lang="zh-Hant"]) .content :global(blockquote) { font-style: normal; }
+  /* Chinese has no true italic: show emphasis as dimmed upright text instead of slanted glyphs */
+  :global(html[lang="zh-Hant"]) .content :global(em) { font-style: normal; color: var(--text-dim); }
+</style>

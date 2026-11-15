@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content';
+import PostPage from '../../../components/PostPage.astro';
+import { langOf, slugOf } from '../../../lib/i18n';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', (p) => langOf(p) === 'zh');
+  return posts.map((post) => ({ params: { slug: slugOf(post) }, props: { post } }));
+}
+
+const { post } = Astro.props;
+---
+
+<PostPage post={post} />

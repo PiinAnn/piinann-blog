@@ -1,15 +1,24 @@
 ---
-const { title = "Piin Ann 平安" } = Astro.props;
+interface Props {
+  title?: string;
+  lang?: string;
+  /** Blog pages: neutral reading theme that follows the system light/dark setting */
+  reading?: boolean;
+  /** hreflang alternates, e.g. [{ lang: 'zh-Hant', href: '/zh/writings/x' }] */
+  alternates?: { lang: string; href: string }[];
+}
+const { title = "Piin Ann 平安", lang = "en", reading = false, alternates = [] } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang} class:list={[{ reading }]}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    {alternates.map((a) => <link rel="alternate" hreflang={a.lang} href={a.href} />)}
   </head>
   <body>
     <slot />
@@ -26,6 +35,53 @@ const { title = "Piin Ann 平安" } = Astro.props;
     --text: #e8e8e8;
     --text-dim: #9a9a9a;
     --mono: 'Monaco', 'Menlo', 'Consolas', monospace;
+  }
+
+  /* ---------- Reading theme (blog only) ----------
+     Black and white first, pink only for borders, dividers and links.
+     Follows the visitor's system light/dark setting. */
+  :root.reading {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --text: #141414;
+    --text-dim: #5c5c5c;        /* 6.7:1 on white */
+    --line: rgba(0, 0, 0, 0.12);
+    --accent: #D6006F;          /* pink as text on white: 5.1:1 */
+    --accent-line: #FF4FB4;     /* pink for borders and dots */
+    --accent-faint: rgba(255, 79, 180, 0.35);
+    --serif: "Source Serif 4", "Noto Serif TC", Georgia, "Songti TC", serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root.reading {
+      --bg: #0a0a0a;
+      --text: #e6e6e6;
+      --text-dim: #9a9a9a;      /* 7.0:1 on #0a0a0a */
+      --line: rgba(255, 255, 255, 0.14);
+      --accent: #FF4FB4;        /* 6.6:1 on #0a0a0a */
+      --accent-line: #FF4FB4;
+      --accent-faint: rgba(255, 79, 180, 0.4);
+    }
+  }
+
+  :root.reading body {
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :root.reading[lang="zh-Hant"] body {
+    line-height: 1.9;
+    letter-spacing: 0.02em;
+  }
+
+  :root.reading a {
+    color: var(--accent);
+  }
+
+  :root.reading a:hover {
+    border-bottom-color: var(--accent);
   }
 
   * { box-sizing: border-box; }
