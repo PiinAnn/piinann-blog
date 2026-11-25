@@ -19,15 +19,50 @@ const { title = "Piin Ann 平安", lang = "en", reading = false, alternates = []
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     {alternates.map((a) => <link rel="alternate" hreflang={a.lang} href={a.href} />)}
+    <script is:inline>
+      // Apply a saved manual theme before the page paints (no flash).
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <slot />
+    <button class="theme-toggle" type="button" aria-label="Toggle light/dark mode" title="Light / Dark">◐</button>
+    <script is:inline>
+      (function () {
+        var root = document.documentElement;
+        var btn = document.querySelector('.theme-toggle');
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        function current() { return root.dataset.theme || (mq.matches ? 'dark' : 'light'); }
+        function label() {
+          var next = current() === 'dark' ? 'light' : 'dark';
+          btn.setAttribute('aria-label', 'Switch to ' + next + ' mode');
+          btn.title = 'Switch to ' + next + ' mode';
+        }
+        btn.addEventListener('click', function () {
+          var next = current() === 'dark' ? 'light' : 'dark';
+          root.dataset.theme = next;
+          try { localStorage.setItem('theme', next); } catch (e) {}
+          label();
+        });
+        mq.addEventListener && mq.addEventListener('change', label);
+        label();
+      })();
+    </script>
   </body>
 </html>
 
 <style is:global>
+  /* ---------- Colour themes ----------
+     Every page follows the visitor's system light/dark setting.
+     The toggle button stores a manual choice in data-theme="light|dark". */
+
+  /* Portfolio (homepage): dark */
   :root {
-    --pink: #FF4FB4;
+    color-scheme: dark;
+    --pink: #FF4FB4;            /* 6.6:1 on #0a0a0a */
     --pink-soft: #FF9DD6;
     --pink-pale: #FFD0EC;
     --pink-glow: rgba(255, 79, 180, 0.4);
@@ -35,34 +70,84 @@ const { title = "Piin Ann 平安", lang = "en", reading = false, alternates = []
     --text: #e8e8e8;
     --text-dim: #9a9a9a;
     --mono: 'Monaco', 'Menlo', 'Consolas', monospace;
-  }
-
-  /* ---------- Reading theme (blog only) ----------
-     Black and white first, pink only for borders, dividers and links.
-     Follows the visitor's system light/dark setting. */
-  :root.reading {
-    color-scheme: light dark;
-    --bg: #ffffff;
-    --text: #141414;
-    --text-dim: #5c5c5c;        /* 6.7:1 on white */
-    --line: rgba(0, 0, 0, 0.12);
-    --accent: #D6006F;          /* pink as text on white: 5.1:1 */
-    --accent-line: #FF4FB4;     /* pink for borders and dots */
-    --accent-faint: rgba(255, 79, 180, 0.35);
     --serif: "Source Serif 4", "Noto Serif TC", Georgia, "Songti TC", serif;
   }
+  /* Portfolio: light */
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      color-scheme: light;
+      --pink: #D6006F;          /* 5.1:1 on white */
+      --pink-soft: #C2185B;     /* 5.9:1 on white */
+      --pink-pale: #F48FC0;     /* borders only */
+      --pink-glow: rgba(214, 0, 111, 0.2);
+      --bg: #ffffff;
+      --text: #141414;
+      --text-dim: #5c5c5c;      /* 6.7:1 on white */
+    }
+  }
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --pink: #D6006F;
+    --pink-soft: #C2185B;
+    --pink-pale: #F48FC0;
+    --pink-glow: rgba(214, 0, 111, 0.2);
+    --bg: #ffffff;
+    --text: #141414;
+    --text-dim: #5c5c5c;
+  }
 
+  /* Reading theme (blog): black and white first, pink for borders, dividers and links */
+  :root.reading {
+    --bg: #ffffff;
+    --text: #141414;
+    --text-dim: #5c5c5c;
+    --line: rgba(0, 0, 0, 0.12);
+    --accent: #D6006F;
+    --accent-line: #FF4FB4;
+    --accent-faint: rgba(255, 79, 180, 0.35);
+  }
   @media (prefers-color-scheme: dark) {
-    :root.reading {
+    :root.reading:not([data-theme="light"]) {
       --bg: #0a0a0a;
       --text: #e6e6e6;
       --text-dim: #9a9a9a;      /* 7.0:1 on #0a0a0a */
       --line: rgba(255, 255, 255, 0.14);
-      --accent: #FF4FB4;        /* 6.6:1 on #0a0a0a */
-      --accent-line: #FF4FB4;
+      --accent: #FF4FB4;
       --accent-faint: rgba(255, 79, 180, 0.4);
     }
   }
+  :root.reading[data-theme="dark"] {
+    --bg: #0a0a0a;
+    --text: #e6e6e6;
+    --text-dim: #9a9a9a;
+    --line: rgba(255, 255, 255, 0.14);
+    --accent: #FF4FB4;
+    --accent-faint: rgba(255, 79, 180, 0.4);
+  }
+
+  /* Theme toggle button */
+  .theme-toggle {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 100;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1.5px solid var(--pink);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+  }
+  :root.reading .theme-toggle { border-color: var(--accent-line); }
+  .theme-toggle:hover, .theme-toggle:focus-visible { opacity: 1; }
 
   :root.reading body {
     font-family: var(--serif);
