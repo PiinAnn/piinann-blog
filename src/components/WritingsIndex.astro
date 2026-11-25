@@ -35,7 +35,7 @@ const groups = [
   <Fonts />
   <main>
     <nav class="topbar">
-      <a href="/" class="home">{t.home}</a>
+      <a href={lang === "zh" ? "/zh/" : "/"} class="home">{t.home}</a>
       <a href={indexUrl(other)} class="lang-switch" hreflang={ui[other].htmlLang}>{t.switchTo}</a>
     </nav>
 
@@ -75,7 +75,7 @@ const groups = [
       <p class="contact-line">
         {t.contact} <span class="email-protect" data-user="piinannw" data-domain="gmail.com"></span>
       </p>
-      <a href="/" class="back-link">{t.home}</a>
+      <a href={lang === "zh" ? "/zh/" : "/"} class="back-link">{t.home}</a>
     </footer>
   </main>
 </Layout>

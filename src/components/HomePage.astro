@@ -1,0 +1,610 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+interface Props { lang: 'en' | 'zh' }
+const { lang } = Astro.props;
+const zh = lang === 'zh';
+const tr = (en: string, zhText: string) => (zh ? zhText : en);
+
+const featured = [
+  {
+    title: 'Just Spatial',
+    year: '2026',
+    image: '/just-spatial.png',
+    href: 'https://cycling74.com/articles/spatialization-in-max',
+    desc: tr("Commissioned by Cycling '74 on the theme of spatialization. It splits conflicting frequency partials between the left and right ears, exploring auditory roughness through dichotic listening.",
+             "Cycling '74 以「空間化」為主題委託製作。把互相衝突的頻率泛音分到左右耳，透過雙耳分聽（dichotic listening）探索聽覺粗糙度。"),
+    links: [
+      { label: tr('interview & download', '專訪與下載'), url: 'https://cycling74.com/articles/spatialization-in-max' },
+      { label: tr('preprint', '預印本'), url: 'https://zenodo.org/records/20927968' },
+      { label: tr('sound demo', '聲音示範'), url: 'https://youtu.be/45RbisnUYfs' },
+    ],
+  },
+  {
+    title: '一起下地獄 To Hell With Me',
+    year: '2026',
+    yt: 'irSC_9r3td4',
+    desc: tr("Commissioned full score for a free-roaming multiplayer VR experience by Moondream Reality, supported by Taiwan's Ministry of Culture. Previewed at Creative Expo Taiwan, exhibited at Chiayi Cultural and Creative Industries Park.",
+             "受 Moondream Reality 委託，為多人自由移動 VR 體驗創作全部配樂，獲文化部支持。於台灣文博會搶先體驗，並在嘉義文化創意產業園區展出。"),
+    links: [
+      { label: tr('project', '計畫頁面'), url: 'https://culturetech.taicca.tw/content/204/TO%20HELL%20WITH%20ME' },
+    ],
+  },
+  {
+    title: 'Bio-Resonance: Hug Protocol',
+    year: '2026',
+    yt: 'UNffvZytHyc',
+    desc: tr("Interactive sound and light on a living tree, triggered by hugs and touch. Commissioned by Children's Cultural Services, City of Jyväskylä, for Lasten Lysti 2026, at an event co-organized with the Valon kaupunki festival.",
+             "在一棵活生生的樹上，以擁抱和觸摸觸發互動聲光。受芬蘭于韋斯屈萊市兒童文化服務處委託，為 Lasten Lysti 2026 製作，於與 Valon kaupunki 光之城藝術節合辦的活動中展出。"),
+    links: [
+      { label: tr('press', '媒體報導'), url: 'https://www.ksml.fi/paikalliset/9832191' },
+      { label: tr('programme', '節目手冊'), url: 'https://online.fliphtml5.com/enxld/esite-syksy2026-verkkoversio-2/#p=10' },
+    ],
+  },
+  {
+    title: 'Mutual Care Eco System',
+    year: '2026',
+    yt: 'fpLnOcR6ADc',
+    desc: tr('Living plants as an instrument: bio signals mapped from Arduino to Max/MSP and Ableton. Live at Ääniasema experimental music festival.',
+             '把活的植物當成樂器：生物訊號經由 Arduino 映射到 Max/MSP 和 Ableton。於芬蘭 Ääniasema 實驗音樂節現場演出。'),
+    links: [],
+  },
+  {
+    title: 'Nature and Artificial Natures',
+    year: '2025',
+    yt: 'aRrmEMGAE7A',
+    desc: tr('Interactive music and sound design for one of the works in the exhibition curated by Chen Pu, AMBI SPACE ONE, Taipei 101. The exhibition received a 2025 Golden Pin Design Award.',
+             '為陳普策展的展覽中其中一件作品，製作互動音樂與聲音設計，展於台北 101 AMBI SPACE ONE。該展覽獲得 2025 金點設計獎。'),
+    links: [
+      { label: tr('walkthrough', '展場導覽'), url: 'https://www.instagram.com/reel/DKo6dFsPOiv/' },
+      { label: tr('exhibition', '展覽資訊'), url: 'https://tixfun.com/UTK0201_?PRODUCT_ID=Q01SZKKF' },
+      { label: tr('award', '獎項'), url: 'https://goldenpin.org.tw/goldenpin/en/winners/2560' },
+    ],
+  },
+  {
+    title: 'ASUS ROG',
+    year: '2025',
+    yt: 'TE469koUF9I',
+    desc: tr('Interactive sound design for a hand-tracking promotional experience. Ableton and Max/MSP.',
+             '為手勢追蹤的品牌推廣體驗製作互動聲音設計，使用 Ableton 和 Max/MSP。'),
+    links: [],
+  },
+];
+
+const v = tr('video', '影片');
+const pl = tr('playlist', '播放清單');
+const lists = [
+  {
+    heading: tr('Interactive & Game', '互動與遊戲'),
+    items: [
+      { title: 'Running Tempo Modulation', year: '2025', note: tr("Presented at JYU Researchers' Night 2026", '於 2026 于韋斯屈萊大學研究者之夜發表'), url: 'https://youtu.be/zWKxRp4hFHw', link: v },
+      { title: 'Global Game Jam 2026', year: '2026', note: tr('Music for 4 teams in 48 hours, Tampere', '48 小時內為 4 個團隊製作音樂，坦佩雷'), url: 'https://www.youtube.com/watch?v=8HZnkHqtqyA&list=PLr9AoEH3asMFRVlXP1MhZXJUu1XIyPTtm', link: pl },
+    ],
+  },
+  {
+    heading: tr('Live Performance', '現場演出'),
+    items: [
+      { title: 'BOKPAKL', year: '2023–2025', note: tr('Music director, cross-media immersive concert series', '音樂總監，跨媒體沉浸式音樂會系列'), url: 'https://www.youtube.com/playlist?list=PLV6AYCULKFro', link: pl },
+      { title: tr('TSG Hawks Season Opening', '台鋼雄鷹開季賽'), year: '2025', note: tr('Featured opening guest', '開場演出嘉賓'), url: 'https://youtu.be/JWwraKbkMB0', link: v },
+      { title: tr('New Taipei City Sonic Wandering Festival', 'New Taipei City Sonic Wandering Festival'), year: '2024', note: tr('Opening guest and main stage', '開場嘉賓與主舞台演出'), url: 'https://youtu.be/O5sM35_VJno', link: v },
+      { title: tr('Taiwan Lantern Festival', '台灣燈會'), year: '2024', note: tr('Featured artist, Tainan', '演出藝人，台南') },
+      { title: tr('Taitung Spirit Festival', 'Taitung Spirit Festival'), year: '2024', note: tr('Outdoor performance', '戶外演出') },
+    ],
+    footnote: tr('Also: Hong Kong Blindcat, Witch House 女巫店, etc.', '其他演出：香港 Blindcat、女巫店等。'),
+  },
+  {
+    heading: tr('Music Releases', '音樂作品'),
+    items: [
+      { title: 'This Is How Waterfall Feels Like', year: '2025', url: 'https://youtu.be/zY8Zv7xyPPs', link: v },
+      { title: 'Liquid Fairy', year: '2024', url: 'https://youtu.be/CoIA3Cq_Js4', link: v },
+      { title: 'Life On Fire', year: '2023', url: 'https://youtu.be/mAuWD19hWCE', link: v },
+      { title: 'Tat Savithur Varenyam', year: '2023', url: 'https://youtu.be/rfGIIY6u-rE', link: v },
+      { title: 'Oursong Remix', year: '2023', note: tr('3rd place, Oursong Remix Competition', 'Oursong Remix 大賽第三名'), url: 'https://youtu.be/jsw6M5Y91Fs', link: v },
+    ],
+  },
+];
+---
+
+
+<Layout title={tr("Piin Ann 平安", "平安 Piin Ann｜王筠安")} lang={zh ? "zh-Hant" : "en"} alternates={[{ lang: "en", href: "/" }, { lang: "zh-Hant", href: "/zh/" }]}>
+  <main>
+    <div class="header">
+      <img src="/profile1.jpg" alt="Piin Ann" class="profile-img" />
+      <div class="header-text">
+        <h1>Piin Ann 平安</h1>
+        <p class="subtitle">{tr("Interactive Audio Design · Music Producer · Sound Researcher", "互動聲音設計 · 音樂製作人 · 聲音研究者")}</p>
+        <p class="academic-name">{tr("academic name: Yun-An Wang", "本名：王筠安 Yun-An Wang")}</p>
+        <p class="location">{tr("📍 Currently in Finland, from Taiwan", "📍 來自台灣，現居芬蘭")}</p>
+      </div>
+    </div>
+
+    <div class="nav">
+      <a href="#about">{tr("about", "關於")}</a>
+      <a href="#works">{tr("works", "作品")}</a>
+      <a href="#blog">{tr("blog", "部落格")}</a>
+      <a href="#services">{tr("services", "服務")}</a>
+      <a href={zh ? "/" : "/zh/"} class="lang-switch" hreflang={zh ? "en" : "zh-Hant"}>{zh ? "English" : "中文"}</a>
+    </div>
+
+    <p class="contact">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+      <span class="email-protect" data-user="piinannw" data-domain="gmail.com"></span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.505" y2="6.5"/></svg>
+      <a href="https://instagram.com/piin_ann">@piin_ann</a> · <a href="https://instagram.com/piinkcodin">@piinkcodin</a>
+    </p>
+
+    <h2 id="about">{tr("about~", "關於~")}</h2>
+
+    <p class="statement">
+      {tr("My only intention is to heal people. I found my passion in music and frequencies. I'm just so fascinated of exploring music as a non-verbal communication tool, and want to explore the full potential of sounds and myself. It is sacred for me, whether through my art work or research work.",
+          "我唯一的初衷，是療癒人。我在音樂和頻率裡找到了熱情，一直很著迷於把音樂當作一種非語言的溝通方式，想探索聲音和我自己所有的可能性。無論是藝術創作還是研究，對我來說都是神聖的。")}
+    </p>
+
+    <p>{tr("Applying the scientific rigor of Music & Science to Electronic Music Production and Interactive sound design.", "把音樂科學的嚴謹，帶進電子音樂製作與互動聲音設計。")}</p>
+
+    {zh ? <p>芬蘭于韋斯屈萊大學（JYU）<strong class="label">音樂與科學碩士生</strong></p> : <p><strong class="label">M.A. Student in Music and Science</strong>, University of Jyväskylä (JYU), Finland</p>}
+    <p><strong class="label">{tr("Research Focus:", "研究方向：")}</strong>{tr(" Real-time auditory roughness reduction through dichotic listening, and its effects on listener perception.", "透過雙耳分聽即時降低聽覺粗糙度，以及它對聽者感知的影響。")}</p>
+    <p>{tr("Previously the Social Operations Manager for odrclass, Taiwan's largest music education community at the time. Produced 200+ articles and 100+ tutorial videos over two years for the Mandarin-speaking music community.", "曾任 odrclass 社群營運經理，當時為台灣最大的音樂教育社群。兩年間為華語音樂社群產出 200 篇以上文章、100 支以上教學影片。")}</p>
+
+    <h2 id="works">{tr("works~", "作品~")}</h2>
+
+    <h3>{tr("Featured", "精選作品")}</h3>
+
+    <div class="featured-grid">
+      {featured.map(w => (
+        <article class="card">
+          {w.yt ? (
+            <button class="thumb yt" data-id={w.yt} aria-label={tr(`Play ${w.title}`, `播放 ${w.title}`)}>
+              <img src={`https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg`} alt={w.title} loading="lazy" />
+              <span class="play">▶</span>
+            </button>
+          ) : (
+            <a class="thumb" href={w.href} target="_blank">
+              <img src={w.image} alt={w.title} loading="lazy" />
+            </a>
+          )}
+          <div class="card-head">
+            <span class="work-title">{w.title}</span>
+            <span class="work-year">{w.year}</span>
+          </div>
+          <p class="card-desc">{w.desc}</p>
+          {w.links.length > 0 && (
+            <div class="card-links">
+              {w.links.map(l => <a href={l.url} target="_blank">{l.label} →</a>)}
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+
+    {lists.map(group => (
+      <section class="work-list">
+        <h3>{group.heading}</h3>
+        <ul class="compact">
+          {group.items.map(i => (
+            <li>
+              <span class="li-title">{i.title}</span>
+              <span class="li-year">{i.year}</span>
+              {i.note && <span class="li-note">{i.note}</span>}
+              {i.url && <a href={i.url} target="_blank">{i.link} →</a>}
+            </li>
+          ))}
+        </ul>
+        {group.footnote && <p class="footnote"><em>{group.footnote}</em></p>}
+      </section>
+    ))}
+
+    <h2 id="blog">{tr("blog~", "部落格~")}</h2>
+    <a href={zh ? "/zh/writings" : "/writings"} class="blog-link-box">
+      <p class="blog-desc">{tr("Notes on my research, some interesting things, and personal reflections.", "關於我的研究、一些有趣的事，以及個人的想法。")}</p>
+      <p class="blog-cta">{tr("→ read more", "→ 閱讀更多")}</p>
+    </a>
+
+    <h2 id="services">{tr("services~", "服務~")}</h2>
+    <ul class="services">
+      <li><strong>{tr("Interactive Sound Design", "互動聲音設計")}</strong>{tr(": Max/MSP, Audio-Visual Synchronization, Custom Controller Mapping", "：Max/MSP、影音同步、客製化控制器映射")}</li>
+      <li><strong>{tr("Digital Music Production", "數位音樂製作")}</strong>{tr(": Ableton Live, Electronic Music, Digital Arrangement", "：Ableton Live、電子音樂、數位編曲")}</li>
+      <li><strong>{tr("Game Audio Design", "遊戲聲音設計")}</strong>{tr(": Wwise, game theme song, sound fx design", "：Wwise、遊戲主題曲、音效設計")}</li>
+      <li><strong>{tr("Performance", "演出")}</strong>{tr(": Studio Session, Live Feature, Live Electronic Performance", "：錄音室樂手、現場客席演出、現場電子演出")}</li>
+    </ul>
+
+    <p class="footer-contact">
+      {tr("for collaborations, commissions, or inquiries:", "合作、委託或任何詢問：")}<br />
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+      <span class="email-protect" data-user="piinannw" data-domain="gmail.com"></span>
+    </p>
+
+    <div class="footer-logo">
+      <img src="/favicon.png" alt="平安" />
+    </div>
+  </main>
+</Layout>
+
+<script>
+  document.querySelectorAll('.email-protect').forEach(el => {
+    const user = el.dataset.user;
+    const domain = el.dataset.domain;
+    const a = document.createElement('a');
+    a.href = `mailto:${user}@${domain}`;
+    a.textContent = `${user}@${domain}`;
+    el.appendChild(a);
+  });
+
+  // Load the YouTube player only when a thumbnail is clicked
+  document.querySelectorAll('.thumb.yt').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.id;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+      iframe.allow = 'autoplay; encrypted-media; fullscreen';
+      iframe.allowFullscreen = true;
+      iframe.title = btn.getAttribute('aria-label') || 'video';
+      const box = document.createElement('div');
+      box.className = 'thumb';
+      box.appendChild(iframe);
+      btn.replaceWith(box);
+    });
+  });
+</script>
+
+<style>
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .profile-img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--pink);
+    box-shadow: 0 0 20px var(--pink-glow);
+    flex-shrink: 0;
+  }
+
+  .header-text { flex: 1; min-width: 0; }
+
+  h1 {
+    font-size: 2.4em;
+    margin: 0 0 4px;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    color: var(--pink);
+    font-family: var(--mono);
+    font-size: 0.95em;
+    margin: 0 0 4px;
+  }
+
+  .academic-name {
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 0.85em;
+    margin: 0 0 4px;
+  }
+
+  .location {
+    color: var(--text-dim);
+    font-size: 0.9em;
+    margin: 4px 0 0;
+  }
+
+  /* Nav */
+  .nav {
+    margin: 30px 0 24px;
+    padding: 14px 0;
+    border-top: 1px dashed rgba(255, 79, 180, 0.3);
+    border-bottom: 1px dashed rgba(255, 79, 180, 0.3);
+    font-family: var(--mono);
+    font-size: 0.9em;
+  }
+  .nav a {
+    margin-right: 22px;
+    color: var(--pink-soft);
+  }
+  .nav a:hover { color: var(--pink); }
+  .nav { display: flex; flex-wrap: wrap; align-items: baseline; row-gap: 8px; }
+  .nav .lang-switch {
+    margin: 0 0 0 auto;
+    color: var(--text);
+    border: 1px solid var(--pink);
+    border-radius: 999px;
+    padding: 1px 12px;
+  }
+
+  /* Contact */
+  .contact {
+    font-family: var(--mono);
+    font-size: 0.9em;
+    color: var(--text-dim);
+    line-height: 1.9;
+  }
+
+  /* Object-box style headers */
+  h2 {
+    display: inline-block;
+    margin: 60px 0 24px;
+    padding: 6px 14px 6px 24px;
+    border: 1.5px solid var(--pink);
+    color: var(--pink);
+    font-family: var(--mono);
+    font-size: 1.05em;
+    font-weight: normal;
+    letter-spacing: 0.02em;
+    position: relative;
+    background: rgba(255, 79, 180, 0.06);
+  }
+
+  h2::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--pink);
+    box-shadow: 0 0 6px var(--pink-glow);
+  }
+
+  h3 {
+    color: var(--pink-soft);
+    font-family: var(--mono);
+    font-size: 0.95em;
+    font-weight: normal;
+    margin: 36px 0 16px;
+    letter-spacing: 0.05em;
+  }
+
+  h3::before {
+    content: "// ";
+    color: var(--text-dim);
+  }
+
+  .statement {
+    font-style: italic;
+    color: var(--text);
+    border-left: 2px solid var(--pink);
+    padding: 4px 0 4px 18px;
+    margin: 24px 0;
+    font-size: 1.02em;
+  }
+
+  .label {
+    color: var(--text);
+    font-family: var(--mono);
+    font-weight: normal;
+  }
+
+  /* Selected names row */
+  .selected {
+    font-family: var(--mono);
+    font-size: 0.9em;
+    color: var(--text);
+    padding: 14px 16px;
+    border: 1px dashed rgba(255, 79, 180, 0.3);
+    border-radius: 3px;
+    line-height: 1.7;
+  }
+  .selected-label {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.85em;
+    margin-bottom: 4px;
+  }
+
+  /* Featured grid: 3 columns desktop, 2 tablet, 1 phone */
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px 22px;
+  }
+
+  .card { min-width: 0; }
+
+  .thumb {
+    display: block;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 79, 180, 0.2);
+    background: #000;
+    padding: 0;
+    cursor: pointer;
+  }
+  a.thumb { border-bottom: 1px solid rgba(255, 79, 180, 0.2); }
+
+  .thumb img {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    max-width: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .thumb:hover img { transform: scale(1.03); opacity: 0.85; }
+
+  .thumb iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1.5px solid #FF4FB4;   /* sits on video, keep bright pink in both themes */
+    color: #FF4FB4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    padding-left: 3px;
+  }
+
+  .card-head { margin: 12px 0 4px; }
+
+  .work-title {
+    font-weight: 600;
+    color: var(--pink);
+    font-family: var(--mono);
+    font-size: 0.95em;
+  }
+
+  .work-year {
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 0.82em;
+    margin-left: 6px;
+  }
+
+  .card-desc {
+    margin: 4px 0 8px;
+    color: var(--text);
+    font-size: 0.9em;
+    line-height: 1.5;
+  }
+
+  .card-links a {
+    white-space: nowrap;
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.82em;
+    margin-right: 12px;
+  }
+
+  /* Compact lists */
+  .work-list { margin-top: 12px; }
+
+  ul.compact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  ul.compact li {
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(255, 79, 180, 0.15);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 12px;
+  }
+  ul.compact li::before { content: none; }
+
+  .li-title { color: var(--text); font-weight: 600; }
+  .li-year { color: var(--text-dim); font-family: var(--mono); font-size: 0.82em; }
+  .li-note { color: var(--text-dim); font-size: 0.9em; }
+  ul.compact a { font-family: var(--mono); font-size: 0.82em; margin-left: auto; }
+
+  .footnote { margin: 10px 0 0; font-size: 0.9em; }
+
+  /* Blog link box */
+  .blog-link-box {
+    display: block;
+    margin: 28px 0 36px;
+    padding: 24px 28px;
+    background: rgba(255, 208, 236, 0.03);
+    border: 1.5px dashed rgba(255, 208, 236, 0.4);
+    border-radius: 3px;
+    text-decoration: none;
+    color: var(--text);
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .blog-link-box:hover {
+    background: rgba(255, 208, 236, 0.06);
+    border-color: var(--pink-pale);
+    border-bottom-color: var(--pink-pale);
+  }
+  .blog-desc {
+    color: var(--text) !important;
+    margin: 0 0 8px;
+    font-size: 1em;
+  }
+  .blog-cta {
+    color: var(--pink);
+    font-family: var(--mono);
+    font-size: 0.9em;
+    margin: 0;
+  }
+
+  /* Services list */
+  ul.services {
+    padding-left: 0;
+    list-style: none;
+  }
+  ul.services li {
+    margin: 12px 0;
+    position: relative;
+    padding-left: 18px;
+  }
+  ul.services li::before {
+    content: "▸";
+    color: var(--pink);
+    position: absolute;
+    left: 0;
+  }
+  ul.services li strong {
+    color: var(--pink-soft);
+    font-family: var(--mono);
+    font-weight: normal;
+  }
+
+  em { color: var(--text-dim); }
+
+  /* Footer */
+  .footer-contact {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px dashed rgba(255, 79, 180, 0.3);
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 0.88em;
+  }
+  .footer-logo {
+    text-align: center;
+    margin-top: 60px;
+    opacity: 0.7;
+  }
+  .footer-logo img {
+    width: 80px;
+    height: auto;
+  }
+
+  @media (max-width: 860px) {
+    .featured-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .profile-img { width: 110px; height: 110px; }
+    h1 { font-size: 2em; }
+    .featured-grid { grid-template-columns: 1fr; }
+    ul.compact a { margin-left: 0; }
+  }
+</style>
