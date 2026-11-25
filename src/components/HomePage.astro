@@ -140,11 +140,16 @@ const lists = [
           "「用音樂來療癒人」是開啟我音樂之路的唯一初衷。我在音樂裡得到的救贖、悸動，以及所有深刻的感受，使我想要傳遞同樣的感受，研究它從何而來，又是如何影響我們。音樂是一種非語言的交換，我想盡可能地探索聲音和我自己所有的可能性。無論是藝術創作還是研究，這條路對我來說都是很不可思議的。")}
     </p>
 
-    <p>{tr("Applying the scientific rigor of Music & Science to Electronic Music Production and Interactive sound design.", "把音樂科學的嚴謹，帶進電子音樂製作與互動聲音設計。")}</p>
+    <p class="lead">{tr("Applying the scientific rigor of Music & Science to Electronic Music Production and Interactive sound design.", "把音樂科學的嚴謹，帶進電子音樂製作與互動聲音設計。")}</p>
 
-    {zh ? <p>芬蘭于韋斯屈萊大學（JYU）<strong class="label">音樂與科學碩士生</strong></p> : <p><strong class="label">M.A. Student in Music and Science</strong>, University of Jyväskylä (JYU), Finland</p>}
-    <p><strong class="label">{tr("Research Focus:", "研究方向：")}</strong>{tr(" Real-time auditory roughness reduction through dichotic listening, and its effects on listener perception.", "透過雙耳分聽即時降低聽覺粗糙度，以及它對聽者感知的影響。")}</p>
-    <p>{tr("Previously the Social Operations Manager for odrclass, Taiwan's largest music education community at the time. Produced 200+ articles and 100+ tutorial videos over two years for the Mandarin-speaking music community.", "曾任 odrclass 音樂製作課社群營運經理，當時為台灣最大的音樂教育社群。兩年間為華語音樂社群產出 200 篇以上文章、100 支以上教學影片。")}</p>
+    <dl class="facts">
+      <dt>{tr("Education", "學歷")}</dt>
+      <dd>{tr("M.A. Student in Music and Science, University of Jyväskylä (JYU), Finland", "芬蘭于韋斯屈萊大學（JYU）音樂與科學碩士生")}</dd>
+      <dt>{tr("Research", "研究方向")}</dt>
+      <dd>{tr("Real-time auditory roughness reduction through dichotic listening, and its effects on listener perception.", "透過雙耳分聽即時降低聽覺粗糙度，以及它對聽者感知的影響。")}</dd>
+      <dt>{tr("Previously", "經歷")}</dt>
+      <dd>{tr("Social Operations Manager for odrclass, Taiwan's largest music education community at the time. Produced 200+ articles and 100+ tutorial videos over two years for the Mandarin-speaking music community.", "odrclass 音樂製作課社群營運經理，當時為台灣最大的音樂教育社群。兩年間為華語音樂社群產出 200 篇以上文章、100 支以上教學影片。")}</dd>
+    </dl>
 
     <h2 id="works">{tr("works~", "作品~")}</h2>
 
@@ -381,6 +386,31 @@ const lists = [
     padding: 4px 0 4px 18px;
     margin: 24px 0;
     font-size: 1.02em;
+  }
+
+  :global(html[lang="zh-Hant"]) .statement { font-style: normal; line-height: 1.9; }
+
+  .lead { margin: 0 0 20px; }
+
+  .facts {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 20px;
+    row-gap: 10px;
+    margin: 0 0 8px;
+    padding: 16px 0 0;
+    border-top: 1px dashed rgba(255, 79, 180, 0.3);
+  }
+  .facts dt {
+    font-family: var(--mono);
+    font-size: 0.85em;
+    color: var(--text-dim);
+    padding-top: 0.15em;
+  }
+  .facts dd { margin: 0; line-height: 1.6; }
+  @media (max-width: 560px) {
+    .facts { grid-template-columns: 1fr; row-gap: 2px; }
+    .facts dd { margin-bottom: 10px; }
   }
 
   .label {
