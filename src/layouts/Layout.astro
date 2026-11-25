@@ -7,9 +7,8 @@ interface Props {
   /** hreflang alternates, e.g. [{ lang: 'zh-Hant', href: '/zh/writings/x' }] */
   alternates?: { lang: string; href: string }[];
 }
-// Noto Sans TC (思源黑體): Chinese text in mono-styled elements. Split by unicode-range, so pages only load the characters they use.
-import '@fontsource/noto-sans-tc/400.css';
-import '@fontsource/noto-sans-tc/700.css';
+// jf open 粉圓 (Huninn): site-wide font. Split by unicode-range, so pages only load the characters they use.
+import '@fontsource/huninn/400.css';
 const { title = "Piin Ann 平安", lang = "en", reading = false, alternates = [] } = Astro.props;
 ---
 
@@ -72,7 +71,8 @@ const { title = "Piin Ann 平安", lang = "en", reading = false, alternates = []
     --bg: #0a0a0a;
     --text: #e8e8e8;
     --text-dim: #9a9a9a;
-    --mono: 'Monaco', 'Menlo', 'Consolas', 'Noto Sans TC', 'PingFang TC', monospace;  /* Chinese characters use Noto Sans TC */
+    --sans: 'Huninn', 'PingFang TC', 'Noto Sans TC', -apple-system, sans-serif;
+    --mono: var(--sans);  /* labels, nav and titles also use 粉圓 */
     --serif: "Source Serif 4", "Noto Serif TC", Georgia, "Songti TC", serif;
   }
   /* Portfolio: light */
@@ -179,7 +179,7 @@ const { title = "Piin Ann 平安", lang = "en", reading = false, alternates = []
     padding: 0;
     background: var(--bg);
     color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    font-family: var(--sans);
     line-height: 1.7;
   }
 
