@@ -35,7 +35,7 @@ const featured = [
     year: '2026',
     yt: 'UNffvZytHyc',
     desc: tr("Interactive sound and light on a living tree, triggered by hugs and touch. Commissioned by Children's Cultural Services, City of Jyväskylä, for Lasten Lysti 2026, at an event co-organized with the Valon kaupunki festival.",
-             "在一棵活生生的樹上，以擁抱和觸摸觸發互動聲光。受芬蘭于韋斯屈萊市兒童文化服務處委託，為 Lasten Lysti 2026 製作，於與 Valon kaupunki 光之城藝術節合辦的活動中展出。"),
+             "以擁抱和觸摸樹觸發互動聲光。受芬蘭于韋斯屈萊市兒童文化服務處委託，為 Lasten Lysti 2026 製作，於與 Jyväskylä City of Light 藝術節合辦的活動中展出。"),
     links: [
       { label: tr('press', '媒體報導'), url: 'https://www.ksml.fi/paikalliset/9832191' },
       { label: tr('programme', '節目手冊'), url: 'https://online.fliphtml5.com/enxld/esite-syksy2026-verkkoversio-2/#p=10' },
@@ -45,8 +45,8 @@ const featured = [
     title: 'Mutual Care Eco System',
     year: '2026',
     yt: 'fpLnOcR6ADc',
-    desc: tr('Living plants as an instrument: bio signals mapped from Arduino to Max/MSP and Ableton. Live at Ääniasema experimental music festival.',
-             '把活的植物當成樂器：生物訊號經由 Arduino 映射到 Max/MSP 和 Ableton。於芬蘭 Ääniasema 實驗音樂節現場演出。'),
+    desc: tr('A mutually beneficial ecosystem: bio signals mapped from Arduino to Max/MSP and Ableton, feeding back the frequencies and PAR light spectrum the plants need. Live at Ääniasema experimental music festival.',
+             '生態雙向助益系統：生物訊號經由 Arduino 映射到 Max/MSP 和 Ableton，反饋植物所需之頻率和 PAR 光譜。於芬蘭 Ääniasema 實驗音樂節現場演出。'),
     links: [],
   },
   {
@@ -54,7 +54,7 @@ const featured = [
     year: '2025',
     yt: 'aRrmEMGAE7A',
     desc: tr('Interactive music and sound design for one of the works in the exhibition curated by Chen Pu, AMBI SPACE ONE, Taipei 101. The exhibition received a 2025 Golden Pin Design Award.',
-             '為陳普策展的展覽中其中一件作品，製作互動音樂與聲音設計，展於台北 101 AMBI SPACE ONE。該展覽獲得 2025 金點設計獎。'),
+             '展於《自造自然》，台北 101 AMBI SPACE ONE。為陳普策展的展覽中其中一件作品製作互動音樂與聲音設計。該展覽獲得 2025 金點設計獎。'),
     links: [
       { label: tr('walkthrough', '展場導覽'), url: 'https://www.instagram.com/reel/DKo6dFsPOiv/' },
       { label: tr('exhibition', '展覽資訊'), url: 'https://tixfun.com/UTK0201_?PRODUCT_ID=Q01SZKKF' },
@@ -73,6 +73,25 @@ const featured = [
 
 const v = tr('video', '影片');
 const pl = tr('playlist', '播放清單');
+const outreach = [
+  { img: '/outreach/city-sounds.jpg', year: '2024',
+    title: tr('Sounds of the City', '城市之聲'),
+    desc: tr('Phone-sampling and arranging workshop in Taipei, co-taught with an improvising cellist. Participants recorded street sounds and turned them into tracks.',
+             '臺北手機取樣編曲工作坊，與即興大提琴樂手共同授課。帶學員上街採集城市聲音，再創作成曲。') },
+  { img: '/outreach/forest-song.jpg', year: '2024',
+    title: tr('Song of the Forest', '森林之歌'),
+    desc: tr('Improvised co-creation workshop at Dongyanshan National Forest, using the forest as a recording studio. Strangers wrote and recorded a song together in two hours.',
+             '於桃園東眼山國家森林遊樂區，把森林當作錄音室，帶領素昧平生的參與者在兩小時內即興創作並錄製歌曲。') },
+  { img: '/outreach/weiwuying.jpg', year: '2024',
+    title: tr('Weiwuying Family Day', '衛武營親子日'),
+    desc: tr('Designed and performed a family concert for children aged 6 to 9 (pipa × cello), introducing the pentatonic scale, basic theory, and major and minor keys.',
+             '設計並演出親子音樂活動「八仙聖誕奇旅」（琵琶 × 大提琴），帶 6 至 9 歲兒童認識五聲音階、基礎樂理與大小調。') },
+  { img: '/outreach/hualien.jpg', year: '2025',
+    title: tr('Soundscape Workshop, Hualien', '花蓮聲音地景工作坊'),
+    desc: tr('Soundscape and phone-sampling arranging workshop at Peanut Living Room, Hualien.',
+             '於花蓮花生客廳，帶領聲音地景與手機取樣編曲工作坊。') },
+];
+
 const lists = [
   {
     heading: tr('Interactive & Game', '互動與遊戲'),
@@ -84,11 +103,11 @@ const lists = [
   {
     heading: tr('Live Performance', '現場演出'),
     items: [
-      { title: 'BOKPAKL', year: '2023–2025', note: tr('Music director, cross-media immersive concert series', '音樂總監，跨媒體沉浸式音樂會系列'), url: 'https://www.youtube.com/playlist?list=PLV6AYCULKFro', link: pl },
+      { title: 'BOKPAKL', year: '2024–2025', note: tr('Music director, cross-media immersive concert series', '音樂總監，跨媒體沉浸式音樂會系列'), url: 'https://www.youtube.com/playlist?list=PLV6AYCULKFro', link: pl },
       { title: tr('TSG Hawks Season Opening', '台鋼雄鷹開季賽'), year: '2025', note: tr('Featured opening guest', '開場演出嘉賓'), url: 'https://youtu.be/JWwraKbkMB0', link: v },
       { title: tr('New Taipei City Sonic Wandering Festival', '新北市追聲音樂季'), year: '2024', note: tr('Opening guest and main stage', '開場嘉賓與主舞台演出'), url: 'https://youtu.be/O5sM35_VJno', link: v },
       { title: tr('Taiwan Lantern Festival', '台灣燈會'), year: '2024', note: tr('Featured artist, Tainan', '演出藝人，台南') },
-      { title: tr('Taitung Spirit Festival', '臺東自然醒慢活祭'), year: '2024', note: tr('Outdoor performance', '戶外演出') },
+      { title: tr('Taitung Spirit Festival', '臺東自然醒慢活祭'), year: '2024–2025', note: tr('Invited performance', '演出邀約') },
     ],
     footnote: tr('Also: Hong Kong Blindcat, Witch House 女巫店, etc.', '其他演出：香港 Blindcat、女巫店等。'),
   },
@@ -99,7 +118,7 @@ const lists = [
       { title: 'Liquid Fairy', year: '2024', url: 'https://youtu.be/CoIA3Cq_Js4', link: v },
       { title: 'Life On Fire', year: '2023', url: 'https://youtu.be/mAuWD19hWCE', link: v },
       { title: 'Tat Savithur Varenyam', year: '2023', url: 'https://youtu.be/rfGIIY6u-rE', link: v },
-      { title: 'Oursong Remix', year: '2023', note: tr('3rd place, Oursong Remix Competition', 'Oursong Remix 大賽第三名'), url: 'https://youtu.be/jsw6M5Y91Fs', link: v },
+      { title: 'Degen (Piin-Ann Remix)', year: '2023', note: tr("3rd place and creators' vote 1st, OurSong Remix Competition", 'OurSong Remix 大賽第三名、創作者互投第一名'), url: 'https://youtu.be/jsw6M5Y91Fs', link: v },
     ],
   },
 ];
@@ -148,7 +167,7 @@ const lists = [
       <dt>{tr("Research", "研究方向")}</dt>
       <dd>{tr("Real-time auditory roughness reduction through dichotic listening, and its effects on listener perception.", "透過雙耳分聽即時降低聽覺粗糙度，以及它對聽者感知的影響。")}</dd>
       <dt>{tr("Previously", "經歷")}</dt>
-      <dd>{tr("Social Operations Manager for odrclass, Taiwan's largest music education community at the time. Produced 200+ articles and 100+ tutorial videos over two years for the Mandarin-speaking music community.", "odrclass 音樂製作課社群營運經理，當時為台灣最大的音樂教育社群。兩年間為華語音樂社群產出 200 篇以上文章、100 支以上教學影片。")}</dd>
+      <dd>{tr("Social Operations Manager and arranging instructor for odrclass (2023–2024). Grew its Instagram from about 6,000 to about 20,000 followers, the largest Taiwanese account of its kind at the time. Produced about 200 posts and 100 tutorial videos with over 1.6 million total views.", "odrclass 音樂製作課社群經營經理與編曲講師（2023–2024）。任職期間 Instagram 追蹤人數由 6 千多人成長至約 2 萬人，為當時臺灣同類型音樂製作帳號中規模最大者。製作約 200 篇圖文與 100 支教學短片，累計觀看超過 160 萬次。")}</dd>
     </dl>
 
     <h2 id="works">{tr("works~", "作品~")}</h2>
@@ -199,6 +218,21 @@ const lists = [
       </section>
     ))}
 
+    <h3>{tr("Teaching & Outreach", "教學與推廣")}</h3>
+    <p class="section-intro">{tr("Workshops with the arts collective 五維聚所 and others, bringing music knowledge into everyday life.", "與藝文團隊五維聚所等單位合作，在各地帶領工作坊，把音樂知識帶進大眾的日常生活。")}</p>
+    <div class="outreach-grid">
+      {outreach.map(o => (
+        <article class="card">
+          <div class="thumb photo"><img src={o.img} alt={o.title} loading="lazy" /></div>
+          <div class="card-head">
+            <span class="work-title">{o.title}</span>
+            <span class="work-year">{o.year}</span>
+          </div>
+          <p class="card-desc">{o.desc}</p>
+        </article>
+      ))}
+    </div>
+
     <h2 id="blog">{tr("blog~", "部落格~")}</h2>
     <a href={zh ? "/zh/writings" : "/writings"} class="blog-link-box">
       <p class="blog-desc">{tr("Notes on my research, some interesting things, and personal reflections.", "關於我的研究、一些有趣的事，以及個人的想法。")}</p>
@@ -207,7 +241,7 @@ const lists = [
 
     <h2 id="services">{tr("services~", "服務~")}</h2>
     <ul class="services">
-      <li><strong>{tr("Interactive Sound Design", "互動聲音設計")}</strong>{tr(": Max/MSP, Audio-Visual Synchronization, Custom Controller Mapping", "：Max/MSP、影音同步、客製化控制器映射")}</li>
+      <li><strong>{tr("Interactive Sound Design", "互動聲音設計")}</strong>{tr(": Max/MSP, Exhibition Sound Installation, Custom Controller Mapping", "：Max/MSP、展覽聲音裝置、客製化控制器映射")}</li>
       <li><strong>{tr("Digital Music Production", "數位音樂製作")}</strong>{tr(": Ableton Live, Electronic Music, Digital Arrangement", "：Ableton Live、電子音樂、數位編曲")}</li>
       <li><strong>{tr("Game Audio Design", "遊戲聲音設計")}</strong>{tr(": Wwise, game theme song, sound fx design", "：Wwise、遊戲主題曲、音效設計")}</li>
       <li><strong>{tr("Performance", "演出")}</strong>{tr(": Studio Session, Live Feature, Live Electronic Performance", "：錄音室樂手、現場客席演出、現場電子演出")}</li>
@@ -444,6 +478,18 @@ const lists = [
   }
 
   .card { min-width: 0; }
+
+  .outreach-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px 18px;
+  }
+  .thumb.photo { aspect-ratio: 4 / 3; cursor: default; }
+  .thumb.photo:hover img { transform: none; opacity: 1; }
+  .section-intro { color: var(--text-dim); font-size: 0.9em; margin: -6px 0 16px; }
+  @media (max-width: 760px) {
+    .outreach-grid { grid-template-columns: repeat(2, 1fr); }
+  }
 
   .thumb {
     display: block;
