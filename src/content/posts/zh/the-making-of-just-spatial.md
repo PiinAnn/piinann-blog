@@ -4,7 +4,7 @@ description: "從純律、粗糙度到雙耳：我怎麼做出一個即時工具
 pubDate: 2026-06-27
 category: studies
 tags: ["just-intonation", "roughness", "spatial-audio", "max-msp", "psychoacoustics"]
-doi: "10.5281/zenodo.20927968"
+doi: "10.5281/zenodo.24560032"
 ---
 <div class="note-box">
   <p>刊登於 <a href="https://cycling74.com/articles/spatialization-in-max">Cycling '74</a> · 由 Cycling '74 委託製作</p>
@@ -76,7 +76,7 @@ William Sethares（2005）試著解決這個問題。他的主要論點是：聽
 
 **Patch：** 完整的 Max/MSP patch 可以在 [Cycling '74 的專題文章](https://cycling74.com/articles/spatialization-in-max)裡取得。
 
-**預印本：** Wang, Y.-A. (2026). *Just Spatial: Real-Time Dichotic Roughness Minimization for Stereo Music*. Zenodo. DOI: [10.5281/zenodo.20927968](https://doi.org/10.5281/zenodo.20927968)。裡面有完整的方法、公式、量測結果和限制。
+**預印本：** Wang, Y.-A. (2026). *Just Spatial: Real-Time Dichotic Roughness Minimization for Stereo Music*. Zenodo. DOI: [10.5281/zenodo.24560032](https://doi.org/10.5281/zenodo.24560032)。裡面有完整的方法、公式、量測結果和限制。
 
 ---
 

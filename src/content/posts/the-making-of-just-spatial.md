@@ -4,7 +4,7 @@ description: "From Just Intonation to roughness to space: how I built a real-tim
 pubDate: 2026-06-27
 category: studies
 tags: ["just-intonation", "roughness", "spatial-audio", "max-msp", "psychoacoustics"]
-doi: "10.5281/zenodo.20927968"
+doi: "10.5281/zenodo.24560032"
 ---
 <div class="note-box">
   <p>Featured on <a href="https://cycling74.com/articles/spatialization-in-max">Cycling '74</a> · commissioned by Cycling '74</p>
@@ -57,7 +57,7 @@ A quick test so you can hear the redistribution for yourself. Use headphones.
 
 **Patch:** The full Max/MSP patch is available through the [Cycling '74 feature article](https://cycling74.com/articles/spatialization-in-max).
 
-**Preprint:** Wang, Y.-A. (2026). *Just Spatial: Real-Time Dichotic Roughness Minimization for Stereo Music*. Zenodo. DOI: [10.5281/zenodo.20927968](https://doi.org/10.5281/zenodo.20927968). Full method, equations, measurements, and limitations.
+**Preprint:** Wang, Y.-A. (2026). *Just Spatial: Real-Time Dichotic Roughness Minimization for Stereo Music*. Zenodo. DOI: [10.5281/zenodo.24560032](https://doi.org/10.5281/zenodo.24560032). Full method, equations, measurements, and limitations.
 
 ---
 
